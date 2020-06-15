@@ -1,19 +1,19 @@
-<div class="container">
+<div class="container" *ngIf="Product">
     <div class="row">
         <div class="col-md-5  " align="center">
             <div class="row">
                 <div class="col-md-12 MainImage-Container border border-right-0 border-top-0 border-danger"
                     style="height: 275px;" id="MainImage-Container" align="center">
                     <img class="MainImage mt-4 mr-4" loading="eager"
-                        alt="Black &amp; Decker Appliances DCM25-IN 330-Watt 1-Cup Coffee Maker"
-                        src="https://www.dealsmagnet.com/Assets/Product/2019/September/17/Deal_13P13fGT.jpg"
-                        onerror=" this.src='https://www.dealsmagnet.com/Assets/Product/placeholder.png'">
+                        alt={{Product.name}}
+                        src={{Product.image}}                    
+                            onerror="this.src='https://www.dealsmagnet.com/Assets/Product/placeholder.png'">
                 </div>
                 <div class="col-md-12">
                     <div class="row ">
                         <div class="col-sm-12" id="UnderImageUser">
                             <div class="float-right text-secondary mt-2">
-                                10:47 PM - 05, June </div>
+                                {{Product.date}} </div>
                         </div>
                     </div>
                 </div>
@@ -24,8 +24,7 @@
             <div class="row">
                 <div class="col-md-12"><br>
                     <h3 class="d-none">About Black &amp; Decker Appliances DCM25-IN 330-Watt 1-Cup Coffee Maker</h3>
-                    <label class="ProductName mb-0 font-weight-bolder">Black &amp; Decker Appliances DCM25-IN 330-Watt
-                        1-Cup Coffee Maker</label>
+                    <label class="ProductName mb-0 font-weight-bolder">{{Product.name}}</label>
                 </div>
 
                 <div class="col-md-12 mb-0 mt-0">
@@ -38,19 +37,19 @@
                     </div>
 
                     <div class="col-md-12">
-                        <span class="DiscountedPrice">Price:</span> <span class="big font-weight-bolder"> ₹866</span>
-                        <span class="OriginalPrice ml-4"><small>MRP: </small> <s> ₹1545</s> </span>
-                        <span class="Discount ml-4 big text-danger font-weight-bolder">44% Off</span>
+                        <span class="DiscountedPrice">Price:</span> <span class="big font-weight-bolder"> ₹{{Product.offer_price}}</span>
+                        <span class="OriginalPrice ml-4"><small>MRP: </small> <s> ₹{{Product.actual_price}}</s> </span>
+                        <span class="Discount ml-4 big text-danger font-weight-bolder">{{Product | discountConverter}}% Off</span>
                     </div>
 
                     <div class="col-7 text-wrap mt-1 big" align="left">
-                        <a href="#" class="btn btn-primary btn-sm">
+                        <a href="{{Product | urlConverter}}" target="_blank" class="btn btn-primary btn-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -4 24 24" class="Buy-Svg" height="16"
                                 width="16" preserveAspectRatio="xMinYMin">
                                 <path
                                     d="M7 16a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm7 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM.962 1.923A.962.962 0 0 1 .962 0h1.151c.902 0 1.682.626 1.878 1.506l1.253 5.642c.196.88.976 1.506 1.878 1.506h7.512l1.442-5.77H6.731a.962.962 0 0 1 0-1.922h9.345a1.923 1.923 0 0 1 1.866 2.39L16.5 9.12a1.923 1.923 0 0 1-1.866 1.457H7.122a3.846 3.846 0 0 1-3.755-3.012L2.113 1.923H.962z">
                                 </path>
-                            </svg>
+                            </svg>                            
                             Get Deal
                         </a>
                     </div>
@@ -59,7 +58,7 @@
                         <span class="Publisher-label">Deal on
                             <a href="#">
                                 <img alt="amazon" class="SellerImage mr-0 ml-2 mt-0 mb-0"
-                                    src="https://www.dealsmagnet.com/Assets/img/Logos/Logo/amazon.jpg">
+                                    src="{{Product | logoConverter}}">
                             </a>
                         </span>
                     </div>
@@ -126,6 +125,7 @@
             <br>
             <br>
             <h4>Trending Deals</h4>
+            <app-cards></app-cards>
         </div>
         <div class="container">
             <div class="row">
