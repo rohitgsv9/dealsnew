@@ -11,17 +11,21 @@
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav">
-                <a routerLink="/Justin" class="nav-item nav-link active">Just In</a>
-                <a routerLink="/Hotdeals" class="nav-item nav-link">Hotdeals</a>
+                <a routerLink="/cards" class="nav-item nav-link active">Just In</a>
+                <a routerLink="/cards" class="nav-item nav-link">Hotdeals</a>
                 <a routerLink="WhatsApp" class="nav-item nav-link">WhatsApp</a>
                 <a routerLink="Telegram" class="nav-item nav-link">Telegram</a>
             </div>
 
-            <div class="navbar-nav ml-auto" style="margin-right: 50px;">
+            <div class="navbar-nav ml-auto" >
                 <form class="example" action="">
                     <input type="text" placeholder="Search.." name="search2">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
+                
+                <a routerLink="/login" data-toggle="modal" data-target="#exampleModalCenter">
+                    <i class="fa fa-user-circle fa-lg  mr-md-5 mr-3 fa-2x pl-3" aria-hidden="true"></i>
+                </a>
             </div>
         </div>
     </nav>

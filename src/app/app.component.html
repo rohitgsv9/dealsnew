@@ -1,12 +1,10 @@
+<app-header fxLayout="column"></app-header>
 
- 
- <app-header></app-header>
-  <app-caro></app-caro>
-  <!-- <app-card></app-card> -->
-  <app-cards></app-cards>
-  
-  <app-footer></app-footer><br>
-  <app-product></app-product>
-  <!-- <app-blog></app-blog> -->
-  <router-outlet></router-outlet>
- 
+<div fxLayout="row" fxFlex="100">
+    <!-- <app-caro fxLayout="column" fxFlex="300px"></app-caro> -->
+ <div class="content" fxLayout="column" fxFlex>
+   <router-outlet></router-outlet>
+ </div>
+</div>
+
+<app-footer fxLayout="column"></app-footer>

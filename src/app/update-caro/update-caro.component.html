@@ -1,0 +1,36 @@
+<div class="conatainer">
+    <br>
+
+
+<div class="container">
+    <h2 class="text-success">View Carousel</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Sr. Number</th>
+                        <th>Image</th>
+                        <th>Caro img Name</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pro of product; index as i">
+                        <td>{{i+1}}</td>
+                        <td><img src="assets\pan.png" alt="image" width="70"></td>
+                        <td>{{pro.name}}</td>
+                        <td><button class="btn btn-danger" >Delete Carousel</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    
+
+</div> 
+<br>
+
+
+</div>
