@@ -32,9 +32,9 @@ export class BackendService {
   }
 
 
-  async FetchProduct(url : string) 
+  async FetchProduct(url : string) : Promise<Product>
   { 
-    await  this.http.get(url, {responseType: 'text'}).subscribe((data : any) =>
+   await  this.http.get(url, {responseType: 'text'}).subscribe((data : any) =>
     {
       if(url.search("amazon") !== -1)
       {          
@@ -49,7 +49,9 @@ export class BackendService {
           this.product.url = url
       }
 
+      return this.product;
     })
+    return null;
   }
 
   product = new Product();
@@ -57,25 +59,25 @@ export class BackendService {
   GetFlipkartProduct(data : string)
   {    
     let value = data.split('class="_35KyD6"',2);
-    value = value[1].split('>', 3)
-    value = value[1].split('</',2)
-    this.product.name = value[0].replace('<!-- --','');
+    value = value.length > 1 ? value[1].split('>', 3) : [];
+    value = value.length > 1 ? value[1].split('</',2) : [];
+    this.product.name = value.length > 0 ? value[0].replace('<!-- --','') : "";
 
     value = data.split('class="_2_AcLJ"',2);
-    value = value[1].split('background-image:url(', 2)
-    value = value[1].split(')',2)
-    this.product.image = value[0];
+    value = value.length > 1 ? value[1].split('background-image:url(', 2) : [];
+    value =  value.length > 1 ? value[1].split(')',2) : [];
+    this.product.image = value.length > 0 ? value[0] : "";
 
     value = data.split('class="_1vC4OE _3qQ9m1"',2);
-    value = value[1].split('>', 2)
-    value = value[1].split('</',2)
-    let temp= value[0].replace('₹','');
+    value = value.length > 1 ? value[1].split('>', 2) : [];
+    value = value.length > 1 ? value[1].split('</',2): [];
+    let temp= value.length > 0 ? value[0].replace('₹','') : "";
     this.product.offer_price =  Number.parseFloat(temp.replace(',',''));
 
     value = data.split('class="_3auQ3N _1POkHg"',2);
-    value = value[1].split('>', 3)
-    value = value[2].split('</',2)
-    temp= value[0].replace('₹','');
+    value = value.length > 1 ? value[1].split('>', 3) : [];
+    value = value.length > 1 ? value[2].split('</',2) : [];
+    temp= value.length > 0 ? value[0].replace('₹','') : "";
     this.product.actual_price =  Number.parseFloat(temp.replace(',',''));
       
   }
@@ -85,28 +87,28 @@ export class BackendService {
   GetAmazonProduct(data : string)
   {    
     let value = data.split('id="productTitle"',2);
-    value = value[1].split('>', 2)
-    value = value[1].split('</',2)
-    this.product.name = value[0].replace(/\n/ig, '');
+    value = value.length > 1 ? value[1].split('>', 2) : [];
+    value =  value.length > 1 ? value[1].split('</',2) : [];
+    this.product.name =  value.length > 0 ? value[0].replace(/\n/ig, '') : "";
 
     value = data.split('class="image item',2);
-    value = value[1].split('<img', 2)
-    value = value[1].split('data-old-hires="',2)
-    value = value[1].split('"',2)
-    this.product.image = value[0];
+    value = value.length > 1 ? value[1].split('<img', 2) : [];
+    value = value.length > 1 ? value[1].split('data-old-hires="',2) : [];
+    value = value.length > 1 ? value[1].split('"',2) : [];
+    this.product.image =  value.length > 0 ? value[0] : "";
 
     value = data.split('id="priceblock_ourprice"',2);
-    value = value[1].split('>', 2)
-    value = value[1].split('</',2)
-    value = value[0].split('.',2)
-    let temp= value[0].replace('₹','');
+    value = value.length > 1 ? value[1].split('>', 2) : [];
+    value = value.length > 1 ? value[1].split('</',2) : [];
+    value = value.length > 0 ? value[0].split('.',2) : [];
+    let temp= value.length > 0 ? value[0].replace('₹','') : "";
     this.product.offer_price =  Number.parseFloat(temp.replace(',',''));
 
     value = data.split('class="priceBlockStrikePriceString a-text-strike"',2);
-    value = value[1].split('>', 2)
-    value = value[1].split('</',2)
-    value = value[0].split('.',2)
-    temp= value[0].replace('₹','');
+    value = value.length > 1 ? value[1].split('>', 2) : [];
+    value = value.length > 1 ? value[1].split('</',2) : [];
+    value = value.length > 0 ? value[0].split('.',2) : [];
+    temp= value.length > 0 ?  value[0].replace('₹','') : "";
     this.product.actual_price =  Number.parseFloat(temp.replace(',',''));
       
   }

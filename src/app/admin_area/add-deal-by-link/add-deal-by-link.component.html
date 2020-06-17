@@ -1,5 +1,5 @@
 <div class="container mt-2">
-    <form>
+    <form (ngSubmit)="FetchProduct()" #heroForm="ngForm">
         <div class="form-group">
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
@@ -17,11 +17,15 @@
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon3">putt your Affilate Link </span>
+                <span class="input-group-text" id="basic-addon3">put your Affilate Link </span>
             </div>
-            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            <input type="text" [(ngModel)]="Link" class="form-control" id="name" name="name" aria-describedby="basic-addon3" #name="ngModel"  required />
+            <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Name is required
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!heroForm.form.valid">Submit</button>
     </form>
 
 </div>

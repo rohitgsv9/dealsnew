@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BackendService } from 'src/app/service/backend.service';
 
 @Component({
   selector: 'app-add-deal-by-link',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddDealByLinkComponent implements OnInit {
 
-  constructor() { }
+  constructor(private backend: BackendService) { }
 
   ngOnInit(): void {
+
   }
 
+  Link : string = '';
+
+  FetchProduct()
+  {
+    if(this.Link !== '')
+    {      
+      let product = this.backend.FetchProduct(this.Link);
+    }
+  }
 }
