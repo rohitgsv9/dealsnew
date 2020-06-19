@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {  Product } from '../modal/product';
+import { JsonPipe } from '@angular/common';
 
 const httpOptions =  {
   headers: new HttpHeaders(
@@ -18,16 +19,16 @@ export class BackendService {
 
   constructor(private http: HttpClient) { }
 
-   apiUrl  = "https://comparehatke.com/admin_area/thuttu/thuttu-api.php";
+  apiUrl  = "https://comparehatke.com/admin_area/thuttu/";
 
   getLatestDeals() 
   {
-    return  this.http.get(this.apiUrl);
+    return  this.http.get(this.apiUrl+'thuttu-api.php');
   }
 
   GetLatestDealsByID(id : number)
   {
-    this.apiUrl = this.apiUrl+"?id="+id;
+    this.apiUrl = this.apiUrl+"thuttu-api.php?id="+id;
     return this.http.get(this.apiUrl);
   }
 
@@ -111,6 +112,15 @@ export class BackendService {
     temp= value.length > 0 ?  value[0].replace('₹','') : "";
     this.product.actual_price =  Number.parseFloat(temp.replace(',',''));
       
+  }
+
+   AddDeal(product : Product)
+  {
+    let data = JSON.stringify(product);
+    return  this.http.post("https://comparehatke.com/admin_area/thuttu/add-deal.php", data).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    )
   }
 
 }
