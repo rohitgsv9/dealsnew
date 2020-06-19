@@ -14,8 +14,33 @@
           </ul>
       </div>
       <div class="col-9 ">
-          <!-- <app-add-blog></app-add-blog> -->
+          <app-add-blog></app-add-blog>
+          <router-outlet></router-outlet>
 
       </div>
     </div>
   </div>
+
+
+  <!-- <section class="dashboard-wrap mtb-40">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+              <div class="dash-left">
+                  <ul>
+                      <li><a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a></li>
+                      <li><a routerLink="/blogs" routerLinkActive="active">Blogs</a></li>
+                      <li><a routerLink="/deal" routerLinkActive="active">Categories</a></li>
+                      <li><a routerLink="/updateBlog" routerLinkActive="active">Pages</a></li>
+                      <li><a [routerLink]="['/login']">Logout</a></li>
+                  </ul>
+              </div>   
+          </div>
+          <div class="col-md-9">
+              <div class="dash-right">
+                <router-outlet></router-outlet>
+              </div>   
+          </div>
+        </div>
+    </div>
+  </section> -->

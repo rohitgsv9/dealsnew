@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddDealComponent implements OnInit {
 
+  public heading1:string ='';
+
   constructor() { }
 
   ngOnInit(): void {

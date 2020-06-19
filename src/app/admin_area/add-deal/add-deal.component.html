@@ -7,8 +7,9 @@
     </div>
 
     <div class="input-group mb-3">
-        <input type="text" class="form-control" id="heading1" aria-describedby="heading1" placeholder="Product Name">
+        <input type="text" [(ngModel)]="heading1" class="form-control" id="heading1" aria-describedby="heading1" placeholder="Product Name">
     </div>
+    <p>{{heading1}}</p>
 
     <div class="input-group mb-3">
         <div class="input-group-prepend">

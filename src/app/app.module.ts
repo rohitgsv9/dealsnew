@@ -30,6 +30,7 @@ import { AddDealByLinkComponent } from './admin_area/add-deal-by-link/add-deal-b
 import { AdminLoginComponent } from './admin_area/admin-login/admin-login.component';
 import { AddCaroComponent } from './admin_area/add-caro/add-caro.component';
 import { UpdateCaroComponent } from './admin_area/update-caro/update-caro.component';
+import { BlogsComponent } from './blogs/blogs.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { UpdateCaroComponent } from './admin_area/update-caro/update-caro.compon
 
     DiscountConverter,
     LogoConverter,
-    UrlConverter
+    UrlConverter,
+    BlogsComponent
   ],
   imports: [
     BrowserModule,
