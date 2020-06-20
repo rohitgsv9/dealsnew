@@ -24,7 +24,7 @@ export class BackendService {
    this.currentUser = this.currentUserSubject.asObservable();
    }
 
-  apiUrl  = "http://localhost:8090/NewTheme/";
+  apiUrl  = "https://cors-anywhere.herokuapp.com/"+"https://comparehatke.com/admin_area/vishnu/"; //"https://cors-anywhere.herokuapp.com/"+
 
   getLatestDeals() 
   {
@@ -56,8 +56,14 @@ export class BackendService {
 
   async FetchProduct(url : string) : Promise<Product>
   { 
-   await  this.http.get(url, {responseType: 'text'}).subscribe((data : any) =>
-    {
+    console.log("url==",url)
+
+    try {
+      
+   
+ let data=  await  this.http.get("https://cors-anywhere.herokuapp.com/"+url, {responseType: 'text'}).toPromise()
+ console.log("data==backend",data)
+  
       if(url.search("amazon") !== -1)
       {          
           this.GetAmazonProduct(data);
@@ -71,9 +77,14 @@ export class BackendService {
           this.product.url = url
       }
 
-      return this.product;
-    })
-    return null;
+       return this.product;
+
+  } catch (error) {
+    console.log("data==error",error)
+
+      
+     return null;
+  }
   }
 
   product = new Product();
