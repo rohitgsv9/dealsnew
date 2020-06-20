@@ -4,16 +4,14 @@
   </button> -->
   
   <!-- Modal -->
-  <div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Admin Login</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+  <div  id="exampleModalCenter" class="mt-2" tabindex="-1" >
+    <div class="container">
+      <div class="content">
+        <div class="header">
+          <h5 class="title" id="exampleModalLongTitle">Admin Login</h5>
+         
         </div>
-        <div class="modal-body">
+        <div class="body">
           
           <form (ngSubmit)="onSubmit()" #userForm="ngForm">
             <div class="form-group">
@@ -25,13 +23,10 @@
               <label for="exampleInputPassword1">Password</label>
               <input type="password" class="form-control" [(ngModel)]="user.password" #password="ngModel"  name="password" placeholder="Password" required>
             </div>
-            <button (click)="onSubmit()" type="button" class="btn btn-primary"  [disabled]="!userForm.form.valid">Sign In</button>
+            <button (click)="onSubmit()" type="button" class="btn btn-primary "  [disabled]="!userForm.form.valid">Sign In</button>
           </form>
         </div>
-        <div class="modal-footer">
-          <button  type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          
-        </div>
+        
       </div>
     </div>
   </div>

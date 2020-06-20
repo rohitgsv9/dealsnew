@@ -2,19 +2,20 @@ ul.a {
     list-style-type: none;
   }
 
-  a.ex:hover, a.ex:active {font-size: 150%; background: red; font-family: monospace;}
+  /* a.ex:hover, a.ex:active {font-size: 150%; background: red; font-family: monospace;} */
 
   .btn {
     background-color: #f4511e;
     border: none;
     color: white;
-    padding: 16px 32px;
+    /* padding: 6px 12px; */
     text-align: center;
-    font-size: 16px;
+    font-size: 11px;
     margin: 4px 2px;
     opacity: 0.6;
     transition: 0.3s;
   }
 
   .btn:hover {opacity: 1}
+
   
