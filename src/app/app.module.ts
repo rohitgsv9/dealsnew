@@ -31,6 +31,9 @@ import { AdminLoginComponent } from './admin_area/admin-login/admin-login.compon
 import { AddCaroComponent } from './admin_area/add-caro/add-caro.component';
 import { UpdateCaroComponent } from './admin_area/update-caro/update-caro.component';
 import { BlogsComponent } from './blogs/blogs.component';
+import { FlipkartComponent } from './flipkart/flipkart.component';
+import { AmazonComponent } from './amazon/amazon.component';
+import { BlogPageComponent } from './blog-page/blog-page.component';
 
 
 @NgModule({
@@ -59,7 +62,10 @@ import { BlogsComponent } from './blogs/blogs.component';
     DiscountConverter,
     LogoConverter,
     UrlConverter,
-    BlogsComponent
+    BlogsComponent,
+    FlipkartComponent,
+    AmazonComponent,
+    BlogPageComponent
   ],
   imports: [
     BrowserModule,
