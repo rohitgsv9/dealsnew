@@ -23,33 +23,14 @@ import { UpdateCaroComponent } from './admin_area/update-caro/update-caro.compon
 
 const routes: Routes = [
   {path:'', redirectTo:'cards', pathMatch:"full"},
-  {path:'product', component:ProductComponent},
+  {path:'product/:id', component:ProductComponent},
   {path:'app', component:AppComponent},
   {path:'cards', component:CardsComponent},
   {path:'card', component:CardComponent},
   {path:'blog', component:BlogComponent},
   {path:'blogview', component:BlogViewComponent},
-
-  { 
-    path:'login',
-    component:AdminLoginComponent,
-    children:[
-      {
-      
-        path:'admin',
-        component:AdminIndexComponent,
-        children: [
-          {path:'addBlog', component:AddBlogComponent},
-      {path:'addDeal', component:AddDealComponent},
-      {path:'updateBlog', component:UpdateBlogComponent},
-      {path:'updateDeal', component:UpdateDealComponent},
-      {path:'byLink', component:AddDealByLinkComponent},
-      {path:'addCaro', component:AddCaroComponent},
-      {path:'updateCaro', component:UpdateCaroComponent}
-         ],
-      }
-    ]
-  },
+  {path:'login', component:AdminLoginComponent},
+  {path:'admin', component:AdminIndexComponent},
   {path:'**', component:PageNotFoundComponent}
 ]; 
 

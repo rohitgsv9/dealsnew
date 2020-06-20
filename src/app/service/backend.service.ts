@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {  Product } from '../modal/product';
-import { JsonPipe } from '@angular/common';
+import { User } from '../modal/user';
+import {  BehaviorSubject,  Observable } from 'rxjs';
 
 const httpOptions =  {
   headers: new HttpHeaders(
     {
-      'Content-Type' : 'application/json',
-      
+      'Content-Type' : 'application/text',
+      'Access-Control-Allow-Methods': 'HEAD, GET, POST, PUT, PATCH, DELETE',            
       "Access-Control-Allow-Origin":"*"    
     })
 };
@@ -17,7 +18,10 @@ const httpOptions =  {
 })
 export class BackendService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject < any > (JSON.parse(localStorage.getItem('currentUser')));
+   this.currentUser = this.currentUserSubject.asObservable();
+   }
 
   apiUrl  = "https://comparehatke.com/admin_area/thuttu/";
 
@@ -121,6 +125,39 @@ export class BackendService {
       (response) => console.log(response),
       (error) => console.log(error)
     )
+  }
+
+  private currentUserSubject: BehaviorSubject < any > ;
+  public currentUser: Observable < any > ;
+
+  public get currentUserValue(): any {
+    return this.currentUserSubject.value;
+   }
+  
+
+  async Login(user : User)
+  {
+    let data = JSON.stringify(user);
+    let loginSuccess = false;
+    let result =  await this.http.post("http://localhost:8090/NewTheme/login-user.php", data).toPromise();
+
+      if(result)
+        {
+          loginSuccess = true; 
+          localStorage.setItem('user', data)
+        }
+        else
+        {
+          alert(false);
+        }
+
+        if (loginSuccess) {
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          localStorage.setItem('isLoggedIn', "true");
+          this.currentUserSubject.next(user);
+        }
+      
+     return loginSuccess;
   }
 
 }

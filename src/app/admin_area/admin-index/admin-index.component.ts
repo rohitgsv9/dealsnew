@@ -12,4 +12,10 @@ export class AdminIndexComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  view : string = 'add-blog';
+
+  viewPage(page : string)
+  {
+    this.view = page;
+  }
 }

@@ -4,19 +4,35 @@
     <div class="row">
       <div class="col-3 bg-light">
           <ul class="a">
-             <a routerLink="/addBlog" class="btn btn-danger"> <li>Add Blog</li></a>
-              <a routerLink="/addDeal" ><li>Add Deals</li></a>
-              <a routerLink="/updateBlog" ><li>Update Blog</li></a>
-              <a routerLink="/updateDeal" ><li>Update Deals</li></a>
-              <a routerLink="/byLink"><li>Add Deals By Link</li></a>
-              <a routerLink="/updateCaro" ><li>Update Carousel</li></a>
-              <a routerLink="/addCaro"><li>Add Carousel Image</li></a>
+             <a (click)="viewPage('add_blog')" class="btn btn-danger"> <li>Add Blog</li></a>
+              <a (click)="viewPage('add_deal')" ><li>Add Deals</li></a>
+              <a (click)="viewPage('Update_blog')" ><li>Update Blog</li></a>
+              <a (click)="viewPage('update_deal')" ><li>Update Deals</li></a>
+              <a (click)="viewPage('add_deal_by_link')"><li>Add Deals By Link</li></a>
+              <a (click)="viewPage('update_caro')" ><li>Update Carousel</li></a>
+              <a (click)="viewPage('add_caro')"><li>Add Carousel Image</li></a>
           </ul>
       </div>
-      <div class="col-9 ">
+      <div class="col-9" *ngIf="view == 'add_blog'">
           <app-add-blog></app-add-blog>
-          <router-outlet></router-outlet>
-
+      </div>
+      <div class="col-9" *ngIf="view == 'add_deal'">
+        <app-add-deal></app-add-deal>
+      </div>
+      <div class="col-9" *ngIf="view == 'Update_blog'">
+        <app-update-blog></app-update-blog>
+      </div>
+      <div class="col-9" *ngIf="view == 'update_deal'">
+        <app-update-deal></app-update-deal>
+      </div>
+      <div class="col-9" *ngIf="view == 'add_deal_by_link'">
+        <app-add-deal-by-link></app-add-deal-by-link>
+      </div>
+      <div class="col-9" *ngIf="view == 'update_caro'">
+        <app-update-caro></app-update-caro>
+      </div>
+      <div class="col-9" *ngIf="view == 'add_caro'">
+        <app-add-caro></app-add-caro>
       </div>
     </div>
   </div>
