@@ -33,6 +33,7 @@ export class UpdateBlogComponent implements OnInit {
 
   DeleteBlog(id : number)
   {
+    this.BlogList = this.BlogList.filter(temp => temp.id !== id)
     this.backend.deleteBlog(id);
   }
 

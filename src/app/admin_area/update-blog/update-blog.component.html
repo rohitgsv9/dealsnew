@@ -14,13 +14,13 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let blog of BlogList; index as i">                        
-                        <td><img src="{{blog.img}}" alt="image" width="70"></td>
+                        <td><img src={{blog.img}} alt="image" width="70" /></td>
                         <td>{{blog.heading}}</td>
                         <td><button class="btn btn-success" (click)="EditBlog(blog)">Edit Deal</button></td>
                         <td><button class="btn btn-danger" (click)="DeleteBlog(blog.id)" >Remove Deal</button></td>
                     </tr>
                 </tbody>
-            </table>
+            </table>    
         </div>
     </div>
 

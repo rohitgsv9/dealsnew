@@ -30,6 +30,12 @@ export class UpdateDealComponent implements OnInit {
     this.productPass.emit(product);
   }
 
+  DeleteDeal(id : number)
+  {
+    this.ProductList = this.ProductList.filter(temp => temp.id !== id)
+    this.backend.deleteDeal(id);
+  }
+
 
  
 

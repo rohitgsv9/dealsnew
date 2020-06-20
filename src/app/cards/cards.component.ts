@@ -31,8 +31,9 @@ export class CardsComponent implements OnInit {
 async hitLatestDealsApi(){
   this.backend.getLatestDeals().subscribe((data)=>
   {
-    (data as IProduct[]).forEach(element => {
-      this.ProductList.push(element)
+    this.ProductList = [];
+    (data as IProduct[]).forEach(element => { 
+        this.ProductList.push(element)
     });      
   })  
 }
