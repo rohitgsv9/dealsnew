@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { IBlog } from '../modal/blog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit(): void {
   }
 
+  @Input() blog : IBlog;
+
+  
+ViewBlog(blog: IBlog)
+{
+  let routeUrl = "blog/"+blog.id;
+  this.router.navigate([routeUrl], {state: {data: {blog}}});
+}
 }

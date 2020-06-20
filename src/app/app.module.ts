@@ -34,6 +34,7 @@ import { BlogsComponent } from './blogs/blogs.component';
 import { FlipkartComponent } from './flipkart/flipkart.component';
 import { AmazonComponent } from './amazon/amazon.component';
 import { BlogPageComponent } from './blog-page/blog-page.component';
+import { AuthGuard } from './admin_area/guards/auth.guard';
 
 
 @NgModule({
@@ -74,7 +75,7 @@ import { BlogPageComponent } from './blog-page/blog-page.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

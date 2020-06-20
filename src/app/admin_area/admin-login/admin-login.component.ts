@@ -10,7 +10,11 @@ import { Router } from '@angular/router';
 })
 export class AdminLoginComponent implements OnInit {
 
-  constructor(private backend: BackendService, private router: Router) { }
+  constructor(private backend: BackendService, private router: Router) {
+    if (this.backend.currentUserValue) {
+      this.router.navigate(['/admin']);
+  }
+   }
 
   ngOnInit(): void {
   }
