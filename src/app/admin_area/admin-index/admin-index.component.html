@@ -4,14 +4,14 @@
     <div class="row">
       <div class="col-3 bg-light">
           <ul class="a">
-             <a (click)="viewPage('add_blog')"> <li>Add Blog</li></a>
-              <a (click)="viewPage('add_deal')" ><li>Add Deals</li></a>
-              <a (click)="viewPage('update_blog')" ><li>View Blog</li></a>
-              <a (click)="viewPage('update_deal')" ><li>View Deals</li></a>
-              <a (click)="viewPage('add_deal_by_link')"><li>Add Deals By Link</li></a>
-              <a (click)="viewPage('update_caro')" ><li>Update Carousel</li></a>
-              <a (click)="viewPage('add_caro')"><li>Add Carousel Image</li></a>
-              <a (click)="Logout()"><li>Logout</li></a>
+             <a (click)="viewPage('add_blog')"  class="btn"> <li>Add Blog</li></a>
+              <a (click)="viewPage('add_deal')"  class="btn "><li>Add Deals</li></a>
+              <a (click)="viewPage('update_blog')"  class="btn "><li>View Blog</li></a>
+              <a (click)="viewPage('update_deal')"  class="btn "><li>View Deals</li></a>
+              <a (click)="viewPage('add_deal_by_link')"  class="btn "><li>Add Deals By Link</li></a>
+              <a (click)="viewPage('update_caro')"  class="btn "><li>Update Carousel</li></a>
+              <a (click)="viewPage('add_caro')"  class="btn "><li>Add Carousel Image</li></a>
+              <a (click)="Logout()"  class="btn "><li>Logout</li></a>
           </ul>
       </div>
       <div class="col-9" *ngIf="view == 'add_blog'">
