@@ -4,13 +4,13 @@
     <div class="row">
       <div class="col-3 bg-light">
           <ul class="a">
-             <a (click)="viewPage('add_blog')" class="btn btn-danger"> <li>Add Blog</li></a>
-              <a (click)="viewPage('add_deal')" ><li>Add Deals</li></a>
-              <a (click)="viewPage('Update_blog')" ><li>Update Blog</li></a>
-              <a (click)="viewPage('update_deal')" ><li>Update Deals</li></a>
-              <a (click)="viewPage('add_deal_by_link')"><li>Add Deals By Link</li></a>
-              <a (click)="viewPage('update_caro')" ><li>Update Carousel</li></a>
-              <a (click)="viewPage('add_caro')"><li>Add Carousel Image</li></a>
+             <a (click)="viewPage('add_blog')" class="btn "> <li>Add Blog</li></a>
+              <a (click)="viewPage('add_deal')" class="btn "><li>Add Deals</li></a>
+              <a (click)="viewPage('Update_blog')"  class="btn "><li>Update Blog</li></a>
+              <a (click)="viewPage('update_deal')" class="btn "><li>Update Deals</li></a>
+              <a (click)="viewPage('add_deal_by_link')" class="btn "><li>Add Deals By Link</li></a>
+              <a (click)="viewPage('update_caro')" class="btn "><li>Update Carousel</li></a>
+              <a (click)="viewPage('add_caro')" class="btn "><li>Add Carousel Image</li></a>
           </ul>
       </div>
       <div class="col-9" *ngIf="view == 'add_blog'">
@@ -37,26 +37,3 @@
     </div>
   </div>
 
-
-  <!-- <section class="dashboard-wrap mtb-40">
-    <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-              <div class="dash-left">
-                  <ul>
-                      <li><a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a></li>
-                      <li><a routerLink="/blogs" routerLinkActive="active">Blogs</a></li>
-                      <li><a routerLink="/deal" routerLinkActive="active">Categories</a></li>
-                      <li><a routerLink="/updateBlog" routerLinkActive="active">Pages</a></li>
-                      <li><a [routerLink]="['/login']">Logout</a></li>
-                  </ul>
-              </div>   
-          </div>
-          <div class="col-md-9">
-              <div class="dash-right">
-                <router-outlet></router-outlet>
-              </div>   
-          </div>
-        </div>
-    </div>
-  </section> -->
