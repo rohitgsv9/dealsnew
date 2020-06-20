@@ -1,31 +1,30 @@
 <br>
-
-
 <div class="container">
     <h2 class="text-success">View Deals</h2>
     <div class="row">
         <div class="col-md-12">
             <table class="table">
                 <thead class="thead-dark">
-                    <tr>
-                        <th>Sr. Number</th>
+                    <tr>                        
                         <th>Image</th>
                         <th>Product Name</th>
+                        <th>Offer Price</th>
+                        <th>Actual Price</th>
                         <th>Edit Deal</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let pro of product; index as i">
-                        <td>{{i+1}}</td>
-                        <td><img src="{{pro.proimg}}" alt="image" width="70"></td>
+                    <tr *ngFor="let pro of ProductList; index as i">                        
+                        <td><img src="{{pro.image}}" alt="image" width="70"></td>
                         <td>{{pro.name}}</td>
-                        <td><button class="btn btn-success" >Edit Deal</button></td>
+                        <td>{{pro.offer_price}}</td>
+                        <td>{{pro.actual_price}}</td>
+                        <td><button class="btn btn-success" (click)="EditDeal(pro)">Edit Deal</button></td>
                         <td><button class="btn btn-danger" >Remove Deal</button></td>
                     </tr>
                 </tbody>
             </table>
-
         </div>
     </div>
 

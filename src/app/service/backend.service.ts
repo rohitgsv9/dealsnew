@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {  Product } from '../modal/product';
 import { User } from '../modal/user';
 import {  BehaviorSubject,  Observable } from 'rxjs';
+import { Blog } from '../modal/blog';
 
 const httpOptions =  {
   headers: new HttpHeaders(
@@ -23,24 +24,46 @@ export class BackendService {
    this.currentUser = this.currentUserSubject.asObservable();
    }
 
-  apiUrl  = "https://comparehatke.com/admin_area/thuttu/";
+  apiUrl  = "https://cors-anywhere.herokuapp.com/"+"https://comparehatke.com/admin_area/vishnu/"; //"https://cors-anywhere.herokuapp.com/"+
 
   getLatestDeals() 
   {
-    return  this.http.get(this.apiUrl+'thuttu-api.php');
+    return  this.http.get(this.apiUrl+'deals-api.php');
   }
 
   GetLatestDealsByID(id : number)
   {
-    this.apiUrl = this.apiUrl+"thuttu-api.php?id="+id;
+    this.apiUrl = this.apiUrl+"deals-api.php?id="+id;
+    return this.http.get(this.apiUrl);
+  }
+
+  getBlog() 
+  {
+    return  this.http.get(this.apiUrl+'blog-api.php');
+  }
+
+  deleteBlog(id : number) 
+  {
+    return  this.http.get(this.apiUrl+'delete-blog.php?id='+id);
+  }
+
+  GetBlogById(id : number)
+  {
+    this.apiUrl = this.apiUrl+"blog-api.php?id="+id;
     return this.http.get(this.apiUrl);
   }
 
 
   async FetchProduct(url : string) : Promise<Product>
   { 
-   await  this.http.get(url, {responseType: 'text'}).subscribe((data : any) =>
-    {
+    console.log("url==",url)
+
+    try {
+      
+   
+ let data=  await  this.http.get("https://cors-anywhere.herokuapp.com/"+url, {responseType: 'text'}).toPromise()
+ console.log("data==backend",data)
+  
       if(url.search("amazon") !== -1)
       {          
           this.GetAmazonProduct(data);
@@ -54,9 +77,14 @@ export class BackendService {
           this.product.url = url
       }
 
-      return this.product;
-    })
-    return null;
+       return this.product;
+
+  } catch (error) {
+    console.log("data==error",error)
+
+      
+     return null;
+  }
   }
 
   product = new Product();
@@ -118,10 +146,37 @@ export class BackendService {
       
   }
 
-   AddDeal(product : Product)
+  AddDeal(product : Product)
   {
     let data = JSON.stringify(product);
-    return  this.http.post("https://comparehatke.com/admin_area/thuttu/add-deal.php", data).subscribe(
+    return  this.http.post("http://localhost:8090/NewTheme/add-deal.php", data).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    )
+  }
+
+  UpdateDeal(product : Product)
+  {
+    let data = JSON.stringify(product);
+    return  this.http.post("http://localhost:8090/NewTheme/update-deal.php", data).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    )
+  }
+
+  AddBlog(blog : Blog)
+  {
+    let data = JSON.stringify(blog);
+    return  this.http.post("http://localhost:8090/NewTheme/add-blog.php", data).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    )
+  }
+
+  UpdateBlog(blog : Blog)
+  {
+    let data = JSON.stringify(Blog);
+    return  this.http.post("http://localhost:8090/NewTheme/update-blog.php", data).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
@@ -159,5 +214,15 @@ export class BackendService {
       
      return loginSuccess;
   }
+
+   
+  logout(): void {
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+    this.currentUserSubject.next(null);
+  
+    localStorage.setItem('isLoggedIn', 'false');
+    localStorage.removeItem('token');
+   }
 
 }

@@ -1,13 +1,13 @@
             <div class="single-blog bg-white">
                 <div class="card">
-                    <img class="card-img-top" src="assets\pan.png" alt="Card image" style="width:100%">
+                    <img class="card-img-top" src={{blog.img}} alt="Card image" style="width:100%">
                     <div class="card-body">
-                        <h4 class="card-title">Flipkart</h4>
-                        <p class="card-text">Some example text some example text. John Doe is an architect and engineer
+                        <h4 class="card-title">{{blog.heading}}</h4>
+                        <p class="card-text">{{blog.heading}}
                         </p>
                         <a routerLink="/blogview" class="btn btn-primary">Read More →</a>
                         <div class="">
-                           <span> 11 June, 2020</span>
+                           <span>{{blog.date}}</span>
                         </div>
                     </div>
 

@@ -1,35 +1,79 @@
+<<<<<<< HEAD
 <div class="container-fluid mt-2">
     <form>
+=======
+<div class="container mt-2">
+    <form (ngSubmit)="onSubmit()" #blogForm="ngForm">
+>>>>>>> e82070a7986787e63d5f6cfafa1a1d87489dc6b2
         <div class="form-group">
             <!-- <label for="heading1">Heading</label> -->
-            <input type="text" class="form-control" id="heading1" aria-describedby="heading1"
-                placeholder="Blog Heading">
+            <input type="text" class="form-control" [(ngModel)]="blog.heading" #heading="ngModel"  name="heading" aria-describedby="heading1"
+                placeholder="Main Heading" required>
         </div>
 
         <div class="form-group">
-            <input type="text" class="form-control" id="Author" aria-describedby="heading1"
-                placeholder="Author Name">
+            <input type="text" class="form-control" [(ngModel)]="blog.author" #author="ngModel"  name="author" aria-describedby="heading1"
+                placeholder="Author Name" required>
         </div>
 
         <div class="form-group">
-            <input type="text" class="form-control" id="sub-heading" aria-describedby="heading1"
-                placeholder="Sub Heading">
+            <input type="text" class="form-control" [(ngModel)]="blog.img" #image="ngModel"  name="image" aria-describedby="heading1"
+                placeholder="Main Image Link"required>
         </div>
 
+          <div class="form-group">
+            <!-- <label for="heading1">Heading</label> -->
+            <input type="text" class="form-control" [(ngModel)]="blog.hp1" #hp1="ngModel"  name="hp1" aria-describedby="heading1"
+                placeholder="Heading 1" required>
+            </div>
 
-        <div class="form-group">
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                <label class="custom-file-label" for="customFileLang">Upload the Image</label>
+            <div class="form-group">
+                <!-- <label for="heading1">Heading</label> -->
+                <input type="text" class="form-control" [(ngModel)]="blog.ip1" #ip1="ngModel"  name="ip1" aria-describedby="heading1"
+                    placeholder="Image 1" required>
+            </div>
+
+            <div class="form-group ">
+                <label for="exampleFormControlTextarea5">Enter text</label>
+                <textarea class="form-control" [(ngModel)]="blog.para1" #para1="ngModel"  name="para1" rows="3" placeholder="Paragraphn 1" required></textarea>
               </div>
-        </div>
+            
+            
+          <div class="form-group">
+            <!-- <label for="heading2">Heading</label> -->
+            <input type="text" class="form-control" [(ngModel)]="blog.hp2" #hp2="ngModel"  name="hp2" aria-describedby="heading2"
+                placeholder="Heading 2">
+            </div>
 
-        <div class="form-group ">
-            <label for="exampleFormControlTextarea5">Enter text</label>
-            <textarea class="form-control" id="exampleFormControlTextarea5" rows="3"></textarea>
-          </div>
+            <div class="form-group">
+                <!-- <label for="heading2">Heading</label> -->
+                <input type="text" class="form-control" [(ngModel)]="blog.ip2" #ip2="ngModel"  name="ip2" aria-describedby="heading2"
+                    placeholder="Image 2">
+            </div>
 
+            <div class="form-group ">
+                <label for="exampleFormControlTextarea5">Enter text</label>
+                <textarea class="form-control" [(ngModel)]="blog.para2" #para2="ngModel"  name="para2" rows="3"></textarea>
+              </div>
+            
+              
+          <div class="form-group">
+            <!-- <label for="heading3">Heading</label> -->
+            <input type="text" class="form-control" [(ngModel)]="blog.hp3" #hp3="ngModel"  name="hp3" aria-describedby="heading3"
+                placeholder="Heading 3">    
+            </div>
+
+            <div class="form-group">
+                <!-- <label for="heading3">Heading</label> -->
+                <input type="text" class="form-control" [(ngModel)]="blog.ip3" #ip3="ngModel"  name="ip3" aria-describedby="heading3"
+                    placeholder="Image 3">
+            </div>
+
+            <div class="form-group ">
+                <label for="exampleFormControlTextarea5">Enter text</label>
+                <textarea class="form-control" [(ngModel)]="blog.para3" #para3="ngModel"  name="para3" rows="3"></textarea>
+              </div>
         
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!blogForm.form.valid">{{buttonValue}}</button>
     </form>
 </div>
