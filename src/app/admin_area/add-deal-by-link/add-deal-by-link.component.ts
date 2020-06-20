@@ -11,7 +11,6 @@ export class AddDealByLinkComponent implements OnInit {
   constructor(private backend: BackendService) { }
 
   ngOnInit(): void {
-
   }
 
   Link : string = '';

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { BackendService } from 'src/app/service/backend.service';
+import { IProduct, Product } from 'src/app/modal/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-deal',
@@ -7,31 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateDealComponent implements OnInit {
 
-  constructor() { }
+  ProductList : IProduct[] = [];
+
+  constructor(private backend : BackendService, private router : Router) { }
 
   ngOnInit(): void {
-  }
-  selectedProd:string;
-  
-  product= [
-    {proimg:'../../assets/amazon logo.png', name:'Laptop'},
-    {proimg:'../../assets/flipkart logo.jpg', name:'Mobile'},
-    // {proimg:'../../assets/logo1.jpg', name:'TV', id:'pro3'},
-    // {proimg:'../../assets/im9.png', name:'Washing Machine'}
-  ]
-
-  users = [];
-
-  createUser(uname) {
-    this.users.push({
-      name:uname.value
-    });
+    this.backend.getLatestDeals().subscribe((data)=>
+    {
+      (data as IProduct[]).forEach(element => {
+        this.ProductList.push(element)
+      });      
+    })    
   }
 
-  removeUser() {
-    this.users.splice(this.users.length-1);
+  @Output() productPass : EventEmitter<Product> =   new EventEmitter();
+
+  EditDeal(product : IProduct)
+  {
+    this.productPass.emit(product);
   }
 
-  
+
+ 
 
 }

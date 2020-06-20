@@ -22,9 +22,4 @@ export class CardsComponent implements OnInit {
       });      
     })    
   }
-
-
-
-
-
 }

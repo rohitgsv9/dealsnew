@@ -4,26 +4,27 @@
     <div class="row">
       <div class="col-3 bg-light">
           <ul class="a">
-             <a (click)="viewPage('add_blog')" class="btn btn-danger"> <li>Add Blog</li></a>
+             <a (click)="viewPage('add_blog')"> <li>Add Blog</li></a>
               <a (click)="viewPage('add_deal')" ><li>Add Deals</li></a>
-              <a (click)="viewPage('Update_blog')" ><li>Update Blog</li></a>
-              <a (click)="viewPage('update_deal')" ><li>Update Deals</li></a>
+              <a (click)="viewPage('update_blog')" ><li>View Blog</li></a>
+              <a (click)="viewPage('update_deal')" ><li>View Deals</li></a>
               <a (click)="viewPage('add_deal_by_link')"><li>Add Deals By Link</li></a>
               <a (click)="viewPage('update_caro')" ><li>Update Carousel</li></a>
               <a (click)="viewPage('add_caro')"><li>Add Carousel Image</li></a>
+              <a (click)="Logout()"><li>Logout</li></a>
           </ul>
       </div>
       <div class="col-9" *ngIf="view == 'add_blog'">
-          <app-add-blog></app-add-blog>
+          <app-add-blog [blog]=blog (page)="viewPage($event)"></app-add-blog>
       </div>
       <div class="col-9" *ngIf="view == 'add_deal'">
-        <app-add-deal></app-add-deal>
-      </div>
-      <div class="col-9" *ngIf="view == 'Update_blog'">
-        <app-update-blog></app-update-blog>
+        <app-add-deal [product]=product (page)="viewPage($event)"></app-add-deal>
+      </div> 
+      <div class="col-9" *ngIf="view == 'update_blog'">
+        <app-update-blog (blogPass)="blogPass($event)"></app-update-blog>
       </div>
       <div class="col-9" *ngIf="view == 'update_deal'">
-        <app-update-deal></app-update-deal>
+        <app-update-deal (productPass)="productPass($event)"></app-update-deal>
       </div>
       <div class="col-9" *ngIf="view == 'add_deal_by_link'">
         <app-add-deal-by-link></app-add-deal-by-link>

@@ -16,9 +16,9 @@ export class CardComponent implements OnInit {
 
   @Input() product : IProduct;
 
-  ViewProduct(product: IProduct)
-  {
-    let routeUrl = "product/"+product.id;
-    this.router.navigate([routeUrl], {state: {data: {product}}});
-  }
+ViewProduct(product: IProduct)
+{
+  let routeUrl = "product/"+product.id;
+  this.router.navigate([routeUrl], {state: {data: {product}}});
+}
 }

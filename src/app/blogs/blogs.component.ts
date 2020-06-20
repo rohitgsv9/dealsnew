@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IBlog } from '../modal/blog';
+import { BackendService } from '../service/backend.service';
 
 @Component({
   selector: 'app-blogs',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogsComponent implements OnInit {
 
-  constructor() { }
+  BlogList : IBlog[] = [];
+  constructor(private backend : BackendService) { }
 
   ngOnInit(): void {
+    this.backend.getBlog().subscribe((data)=>
+    {
+      (data as IBlog[]).forEach(element => {
+        this.BlogList.push(element)
+      });      
+    })    
   }
 
 }
