@@ -18,9 +18,9 @@
             </div>
 
             <div class="navbar-nav ml-auto mr-4" >
-                <form class="example" action="">
-                    <input type="text" placeholder="Search.." name="search2">
-                    <button type="submit"><i class="fa fa-search"></i></button>
+                <form class="example">
+                    <input type="text" placeholder="Search.." [(ngModel)]=Keyword name="search2" required>
+                    <button type="submit" (click)="SearchProduct()"><i class="fa fa-search"></i></button>
                 </form>
                 
                 

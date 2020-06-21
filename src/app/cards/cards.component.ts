@@ -42,8 +42,8 @@ async hitLatestDealsApi()
 }
 
   async getProduct(){
-    let product =await  this.backend.FetchProduct(this.Link);
-    return product;
+    //let product =await  this.backend.FetchProduct(this.Link);
+    //return product;
 
   }
 
@@ -59,6 +59,14 @@ async hitLatestDealsApi()
     ,10*6000)
   }
 
-
-
+  MoreDeal( )
+  {
+      this.backend.getLatestDeals(++this.pageNumber).subscribe((data)=>
+      {
+        (data as IProduct[]).forEach(element => {
+          this.ProductList.push(element)
+        });      
+      }) 
+    
+  }
 }

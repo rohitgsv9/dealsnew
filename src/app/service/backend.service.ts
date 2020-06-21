@@ -8,7 +8,7 @@ import { Blog } from '../modal/blog';
 const httpOptions =  {
   headers: new HttpHeaders(
     {
-      'Content-Type' : 'application/text',
+      'Content-Type' : 'application/json',
       'Access-Control-Allow-Methods': 'HEAD, GET, POST, PUT, PATCH, DELETE',            
       "Access-Control-Allow-Origin":"*"    
     })
@@ -24,7 +24,8 @@ export class BackendService {
    this.currentUser = this.currentUserSubject.asObservable();
    }
 
-  apiUrl  = "https://cors-anywhere.herokuapp.com/"+"https://comparehatke.com/admin_area/vishnu/"; //"https://cors-anywhere.herokuapp.com/"+
+   //
+  apiUrl  = "https://autoaffiliate.in/vishnu/"; //"https://cors-anywhere.herokuapp.com/"+
 
   getLatestDeals(page : number) 
   {
@@ -33,13 +34,25 @@ export class BackendService {
 
   GetLatestDealsByID(id : number)
   {
-    this.apiUrl = this.apiUrl+"deals-api.php?id="+id;
-    return this.http.get(this.apiUrl);
+    let url= this.apiUrl+"deals-api.php?id="+id;
+    return this.http.get(url);
+  }
+
+  getLatestDealsByStore(store : string, page : number)
+  {
+    let url = this.apiUrl+"deals-api.php?store="+store+"&page="+page;
+    return this.http.get(url);
+  }
+
+  getLatestDealsByKeyword(search : string, page : number)
+  {
+    let url = this.apiUrl+"deals-api.php?search="+search+"&page="+page;
+    return this.http.get(url);
   }
 
   async deleteDeal(id : number) 
   {
-    return await this.http.get("https://comparehatke.com/admin_area/vishnu/delete-deal.php?id="+id).toPromise();
+    return await this.http.get(this.apiUrl+"delete-deal.php?id="+id).toPromise();
   }
 
 
@@ -50,13 +63,13 @@ export class BackendService {
 
   deleteBlog(id : number) 
   {
-return  this.http.delete("https://comparehatke.com/admin_area/vishnu/delete-blog.php?id="+id).toPromise();
+return  this.http.delete(this.apiUrl+"delete-blog.php?id="+id).toPromise();
   }
 
   GetBlogById(id : number)
   {
-    this.apiUrl = this.apiUrl+"blog-api.php?id="+id;
-    return this.http.get(this.apiUrl);
+    let url = this.apiUrl+"blog-api.php?id="+id;
+    return this.http.get(url);
   }
 
 
@@ -155,7 +168,7 @@ return  this.http.delete("https://comparehatke.com/admin_area/vishnu/delete-blog
   AddDeal(product : Product)
   {
     let data = JSON.stringify(product);
-    return  this.http.post("https://comparehatke.com/admin_area/vishnu/add-deal.php", data).subscribe(
+    return  this.http.post(this.apiUrl+"add-deal.php", data).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
@@ -164,7 +177,7 @@ return  this.http.delete("https://comparehatke.com/admin_area/vishnu/delete-blog
   UpdateDeal(product : Product)
   {
     let data = JSON.stringify(product);
-    return  this.http.post("https://comparehatke.com/admin_area/vishnu/update-deal.php", data).subscribe(
+    return  this.http.post(this.apiUrl+"update-deal.php", data).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
@@ -173,7 +186,7 @@ return  this.http.delete("https://comparehatke.com/admin_area/vishnu/delete-blog
   AddBlog(blog : Blog)
   {
     let data = JSON.stringify(blog);
-    return  this.http.post("https://comparehatke.com/admin_area/vishnu/add-blog.php", data).subscribe(
+    return  this.http.post(this.apiUrl+"add-blog.php", data).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
@@ -182,7 +195,7 @@ return  this.http.delete("https://comparehatke.com/admin_area/vishnu/delete-blog
   UpdateBlog(blog : Blog)
   {
     let data = JSON.stringify(Blog);
-    return  this.http.post("https://comparehatke.com/admin_area/vishnu/update-blog.php", data).subscribe(
+    return  this.http.post(this.apiUrl+"update-blog.php", data).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
@@ -200,7 +213,7 @@ return  this.http.delete("https://comparehatke.com/admin_area/vishnu/delete-blog
   {
     let data = JSON.stringify(user);
     let loginSuccess = false;
-    let result =  await this.http.post("https://comparehatke.com/admin_area/vishnu/login-user.php", data).toPromise();
+    let result =  await this.http.post(this.apiUrl+"login-user.php", data).toPromise();
 
       if(result)
         {

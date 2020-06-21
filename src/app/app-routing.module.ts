@@ -10,6 +10,9 @@ import { BlogComponent } from './blog/blog.component';
 import { BlogViewComponent } from './blog-view/blog-view.component';
 import { AdminLoginComponent } from './admin_area/admin-login/admin-login.component';
 import { AuthGuard } from './admin_area/guards/auth.guard';
+import { AmazonComponent } from './amazon/amazon.component';
+import { FlipkartComponent } from './flipkart/flipkart.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -23,6 +26,9 @@ const routes: Routes = [
   {path:'blog', component:BlogComponent},
   {path:'blogview', component:BlogViewComponent},
   {path:'login', component:AdminLoginComponent},
+  {path:'amazon', component:AmazonComponent},
+  {path:'search/:keyword', component:SearchComponent},
+  {path:'flipkart', component:FlipkartComponent},
   {path:'admin', component:AdminIndexComponent, canActivate: [AuthGuard]},
   {path:'**', component:PageNotFoundComponent}
 ]; 
