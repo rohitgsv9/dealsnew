@@ -11,11 +11,12 @@ import { Router } from '@angular/router';
 export class UpdateDealComponent implements OnInit {
 
   ProductList : IProduct[] = [];
+  pageNumber = 1;
 
   constructor(private backend : BackendService, private router : Router) { }
 
   ngOnInit(): void {
-    this.backend.getLatestDeals().subscribe((data)=>
+    this.backend.getLatestDeals(this.pageNumber).subscribe((data)=>
     {
       (data as IProduct[]).forEach(element => {
         this.ProductList.push(element)
@@ -28,6 +29,27 @@ export class UpdateDealComponent implements OnInit {
   EditDeal(product : IProduct)
   {
     this.productPass.emit(product);
+  }
+
+  MoreDeal(direction : string)
+  {
+    if(direction === 'next')
+    {
+      this.backend.getLatestDeals(++this.pageNumber).subscribe((data)=>
+      {
+        (data as IProduct[]).forEach(element => {
+          this.ProductList.push(element)
+        });      
+      }) 
+    }else if(direction === 'previous')
+    {
+      this.backend.getLatestDeals(--this.pageNumber).subscribe((data)=>
+      {
+        (data as IProduct[]).forEach(element => {
+          this.ProductList.push(element)
+        });      
+      }) 
+    }
   }
 
   DeleteDeal(id : number)

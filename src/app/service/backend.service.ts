@@ -26,14 +26,9 @@ export class BackendService {
 
   apiUrl  = "https://cors-anywhere.herokuapp.com/"+"https://comparehatke.com/admin_area/vishnu/"; //"https://cors-anywhere.herokuapp.com/"+
 
-  getLatestDeals() 
+  getLatestDeals(page : number) 
   {
-    return  this.http.get(this.apiUrl+'deals-api.php');
-  }
-
-  async deleteDeal(id : number) 
-  {
-    return await this.http.get("https://comparehatke.com/admin_area/vishnu/delete-deal.php?id="+id).toPromise();
+    return  this.http.get(this.apiUrl+'deals-api.php?page='+page);
   }
 
   GetLatestDealsByID(id : number)
@@ -41,6 +36,12 @@ export class BackendService {
     this.apiUrl = this.apiUrl+"deals-api.php?id="+id;
     return this.http.get(this.apiUrl);
   }
+
+  async deleteDeal(id : number) 
+  {
+    return await this.http.get("https://comparehatke.com/admin_area/vishnu/delete-deal.php?id="+id).toPromise();
+  }
+
 
   getBlog() 
   {
