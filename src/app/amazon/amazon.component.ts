@@ -12,6 +12,7 @@ export class AmazonComponent implements OnInit {
   Link:any="https://www.amazon.in/D-Link-DIR-615-Wireless-N300-Router-Black/dp/B0085IATT6/ref=lp_21488193031_1_1?s=computers&ie=UTF8&qid=1592671364&sr=1-1"
   i=0
   interval:any
+  pageNumber = 1;
 
   ProductList : IProduct[] = [];
 
@@ -28,18 +29,21 @@ export class AmazonComponent implements OnInit {
     console.log("data==",data1)
   }
 
-async hitLatestDealsApi(){
-  this.backend.getLatestDeals().subscribe((data)=>
+async hitLatestDealsApi()
+{
+  
+  this.backend.getLatestDeals(this.pageNumber).subscribe((data)=>
   {
-    (data as IProduct[]).forEach(element => {
-      this.ProductList.push(element)
+    this.ProductList = [];
+    (data as IProduct[]).forEach(element => { 
+        this.ProductList.push(element)
     });      
   })  
 }
 
   async getProduct(){
-    let product =await  this.backend.FetchProduct(this.Link);
-    return product;
+    //let product =await  this.backend.FetchProduct(this.Link);
+    //return product;
 
   }
 
@@ -52,9 +56,17 @@ async hitLatestDealsApi(){
       // let product =await  this.backend.FetchProduct(this.Link);
      /* Do something here */
     }
-    ,10*1000)
+    ,10*6000)
   }
 
-
-
+  MoreDeal( )
+  {
+      this.backend.getLatestDeals(++this.pageNumber).subscribe((data)=>
+      {
+        (data as IProduct[]).forEach(element => {
+          this.ProductList.push(element)
+        });      
+      }) 
+    
+  }
 }

@@ -37,6 +37,7 @@ import { BlogPageComponent } from './blog-page/blog-page.component';
 import { AuthGuard } from './admin_area/guards/auth.guard';
 import { SearchComponent } from './search/search.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
+import { TrendingComponent } from './trending/trending.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { BlogListComponent } from './blog-list/blog-list.component';
     AmazonComponent,
     BlogPageComponent,
     SearchComponent,
-    BlogListComponent
+    BlogListComponent,
+    TrendingComponent
   ],
   imports: [
     BrowserModule,
