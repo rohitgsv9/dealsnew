@@ -33,16 +33,16 @@
     
      
 
-      <div class="col-9" *ngIf="view == 'add_blog'">
+      <div class="col-12" *ngIf="view == 'add_blog'">
         <app-add-blog [blog]=blog (page)="viewPage($event)"></app-add-blog>
     </div>
-    <div class="col-9" *ngIf="view == 'add_deal'">
+    <div class="col-12" *ngIf="view == 'add_deal'">
       <app-add-deal [product]=product (page)="viewPage($event)"></app-add-deal>
     </div> 
-    <div class="col-9" *ngIf="view == 'update_blog'">
+    <div class="col-12" *ngIf="view == 'update_blog'">
       <app-update-blog (blogPass)="blogPass($event)"></app-update-blog>
     </div>
-    <div class="col-9" *ngIf="view == 'update_deal'">
+    <div class="col-12" *ngIf="view == 'update_deal'">
       <app-update-deal (productPass)="productPass($event)"></app-update-deal>
       </div>
       <div class="col-12" *ngIf="view == 'add_deal_by_link'">

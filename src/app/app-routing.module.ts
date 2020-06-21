@@ -13,6 +13,7 @@ import { AuthGuard } from './admin_area/guards/auth.guard';
 import { AmazonComponent } from './amazon/amazon.component';
 import { FlipkartComponent } from './flipkart/flipkart.component';
 import { SearchComponent } from './search/search.component';
+import { BlogListComponent } from './blog-list/blog-list.component';
 
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:'product/:id', component:ProductComponent},
   {path:'app', component:AppComponent},
   {path:'cards', component:CardsComponent},
+  {path:'blogList', component:BlogListComponent},
   {path:'card', component:CardComponent},
   {path:'blog', component:BlogComponent},
   {path:'blogview', component:BlogViewComponent},
