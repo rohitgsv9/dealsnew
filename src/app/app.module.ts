@@ -35,6 +35,8 @@ import { FlipkartComponent } from './flipkart/flipkart.component';
 import { AmazonComponent } from './amazon/amazon.component';
 import { BlogPageComponent } from './blog-page/blog-page.component';
 import { AuthGuard } from './admin_area/guards/auth.guard';
+import { SearchComponent } from './search/search.component';
+import { BlogListComponent } from './blog-list/blog-list.component';
 
 
 @NgModule({
@@ -66,7 +68,9 @@ import { AuthGuard } from './admin_area/guards/auth.guard';
     BlogsComponent,
     FlipkartComponent,
     AmazonComponent,
-    BlogPageComponent
+    BlogPageComponent,
+    SearchComponent,
+    BlogListComponent
   ],
   imports: [
     BrowserModule,

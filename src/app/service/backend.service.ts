@@ -194,7 +194,7 @@ export class BackendService {
   {
     let data = JSON.stringify(user);
     let loginSuccess = false;
-    let result =  await this.http.post("http://localhost:8090/NewTheme/login-user.php", data).toPromise();
+    let result =  await this.http.post("https://comparehatke.com/admin_area/vishnu/login-user.php", data).toPromise();
 
       if(result)
         {
