@@ -31,6 +31,11 @@ export class BackendService {
     return  this.http.get(this.apiUrl+'deals-api.php');
   }
 
+  async deleteDeal(id : number) 
+  {
+    return await this.http.get("https://comparehatke.com/admin_area/vishnu/delete-deal.php?id="+id).toPromise();
+  }
+
   GetLatestDealsByID(id : number)
   {
     this.apiUrl = this.apiUrl+"deals-api.php?id="+id;
@@ -44,7 +49,7 @@ export class BackendService {
 
   deleteBlog(id : number) 
   {
-    return  this.http.get(this.apiUrl+'delete-blog.php?id='+id);
+return  this.http.delete("https://comparehatke.com/admin_area/vishnu/delete-blog.php?id="+id).toPromise();
   }
 
   GetBlogById(id : number)
@@ -149,7 +154,7 @@ export class BackendService {
   AddDeal(product : Product)
   {
     let data = JSON.stringify(product);
-    return  this.http.post("http://localhost:8090/NewTheme/add-deal.php", data).subscribe(
+    return  this.http.post("https://comparehatke.com/admin_area/vishnu/add-deal.php", data).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
@@ -158,7 +163,7 @@ export class BackendService {
   UpdateDeal(product : Product)
   {
     let data = JSON.stringify(product);
-    return  this.http.post("http://localhost:8090/NewTheme/update-deal.php", data).subscribe(
+    return  this.http.post("https://comparehatke.com/admin_area/vishnu/update-deal.php", data).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
@@ -167,7 +172,7 @@ export class BackendService {
   AddBlog(blog : Blog)
   {
     let data = JSON.stringify(blog);
-    return  this.http.post("http://localhost:8090/NewTheme/add-blog.php", data).subscribe(
+    return  this.http.post("https://comparehatke.com/admin_area/vishnu/add-blog.php", data).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )
@@ -176,7 +181,7 @@ export class BackendService {
   UpdateBlog(blog : Blog)
   {
     let data = JSON.stringify(Blog);
-    return  this.http.post("http://localhost:8090/NewTheme/update-blog.php", data).subscribe(
+    return  this.http.post("https://comparehatke.com/admin_area/vishnu/update-blog.php", data).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     )

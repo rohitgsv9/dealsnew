@@ -16,12 +16,12 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let pro of ProductList; index as i">                        
-                        <td><img src="{{pro.image}}" alt="image" width="70"></td>
+                        <td><img src={{pro.image}} alt="image" width="70" /></td>
                         <td>{{pro.name}}</td>
                         <td>{{pro.offer_price}}</td>
                         <td>{{pro.actual_price}}</td>
                         <td><button class="btn btn-success" (click)="EditDeal(pro)">Edit Deal</button></td>
-                        <td><button class="btn btn-danger" >Remove Deal</button></td>
+                        <td><button class="btn btn-danger" (click)="DeleteDeal(pro.id)" >Remove Deal</button></td>
                     </tr>
                 </tbody>
             </table>

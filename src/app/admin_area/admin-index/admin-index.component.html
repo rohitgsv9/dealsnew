@@ -15,13 +15,15 @@
     
             <div class="collapse navbar-collapse" id="navbarCollapseadmin">
                 <div class="navbar-nav">
-                  <a (click)="viewPage('add_blog')" class="btn text-white"> Add Blog</a>
+                  
                   <a (click)="viewPage('add_deal')" class="btn text-white">Add Deals</a>
-                  <a (click)="viewPage('Update_blog')"  class="btn text-white">Update Blog</a>
-                  <a (click)="viewPage('update_deal')" class="btn text-white">Update Deals</a>
+                  <a (click)="viewPage('update_deal')" class="btn text-white">View Deals</a>
                   <a (click)="viewPage('add_deal_by_link')" class="btn text-white">Add Deals By Link</a>
-                  <a (click)="viewPage('update_caro')" class="btn text-white">Update Carousel</a>
-                  <a (click)="viewPage('add_caro')" class="btn text-white">Add Carousel </a>
+                  <a (click)="viewPage('add_blog')" class="btn text-white"> Add Blog</a>
+                  <a (click)="viewPage('update_blog')"  class="btn text-white">View Blog</a> 
+                  <a (click)="viewPage('add_caro')" class="btn ">Add Carousel </a> 
+                  <a (click)="viewPage('update_caro')" class="btn text-white">View Carousel</a>
+                  <a (click)="Logout()"  class="btn text-white"><li>Logout</li></a>
                 </div>
     
               
@@ -29,19 +31,52 @@
         </nav>
     </div>
     
+     
 
-      <div class="col-12 " *ngIf="view == 'add_blog'">
-          <app-add-blog></app-add-blog>
+      <div class="col-9" *ngIf="view == 'add_blog'">
+        <app-add-blog [blog]=blog (page)="viewPage($event)"></app-add-blog>
+    </div>
+    <div class="col-9" *ngIf="view == 'add_deal'">
+      <app-add-deal [product]=product (page)="viewPage($event)"></app-add-deal>
+    </div> 
+    <div class="col-9" *ngIf="view == 'update_blog'">
+      <app-update-blog (blogPass)="blogPass($event)"></app-update-blog>
+    </div>
+    <div class="col-9" *ngIf="view == 'update_deal'">
+      <app-update-deal (productPass)="productPass($event)"></app-update-deal>
       </div>
-      <div class="col-12" *ngIf="view == 'add_deal'">
-        <app-add-deal></app-add-deal>
+      <div class="col-12" *ngIf="view == 'add_deal_by_link'">
+        <app-add-deal-by-link></app-add-deal-by-link>
       </div>
-      <div class="col-12" *ngIf="view == 'Update_blog'">
-        <app-update-blog></app-update-blog>
+      <div class="col-12" *ngIf="view == 'update_caro'">
+        <app-update-caro></app-update-caro>
       </div>
-      <div class="col-12" *ngIf="view == 'update_deal'">
-        <app-update-deal></app-update-deal>
-      
+      <div class="col-12" *ngIf="view == 'add_caro'">
+        <app-add-caro></app-add-caro>
+      </div>
     </div>
   </div>
-  </div>
+
+
+  <!-- <section class="dashboard-wrap mtb-40">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+              <div class="dash-left">
+                  <ul>
+                      <li><a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a></li>
+                      <li><a routerLink="/blogs" routerLinkActive="active">Blogs</a></li>
+                      <li><a routerLink="/deal" routerLinkActive="active">Categories</a></li>
+                      <li><a routerLink="/updateBlog" routerLinkActive="active">Pages</a></li>
+                      <li><a [routerLink]="['/login']">Logout</a></li>
+                  </ul>
+              </div>   
+          </div>
+          <div class="col-md-9">
+              <div class="dash-right">
+                <router-outlet></router-outlet>
+              </div>   
+          </div>
+        </div>
+    </div>
+  </section> -->
