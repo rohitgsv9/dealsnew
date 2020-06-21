@@ -10,3 +10,17 @@ hr {
     background: black; 
    
 }
+
+.btn {
+    background-color: #f4511e;
+    border: none;
+    color: white;
+    /* padding: 6px 12px; */
+    text-align: center;
+    font-size: 14px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+  }
+
+  .btn:hover {opacity: 1}

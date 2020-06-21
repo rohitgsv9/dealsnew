@@ -17,7 +17,7 @@ const httpOptions =  {
 @Injectable({
   providedIn: 'root'
 })
-export class BackendService {
+export class BackendService { 
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject < any > (JSON.parse(localStorage.getItem('currentUser')));

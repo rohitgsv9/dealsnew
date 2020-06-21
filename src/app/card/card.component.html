@@ -11,15 +11,17 @@
     </div>
     <a class="MainCardAnchore" href="#">
         <div class="card-img">
-            <img class="lazy card-img-top img-responsive" alt={{product.name}}
-                src="{{product.image}}" style="width: 100%; height: 10rem;" >
+
+            <img class="lazy card-img-top postthumb img-responsive" alt={{product.name}}
+                src="{{product.image}}" style="width: 100%; height: 10rem;">
+            
 
         </div>
     </a>
     <div class="card-body p-1">
         <p class="card-text mb-1 font-weight-bold">
             <a class="MainCardAnchore" (click)="ViewProduct(product)">
-               {{product.name | slice:0:40}} </a>
+               {{product.name | slice:0:32}} </a>
         </p>
         <div class="row card-text">
             <div class="col-5 card-DiscountPrice pl-2 d-inline">
@@ -42,7 +44,7 @@
                         alt="{{product.logo}}" onerror="this.style='display:none;'">
                 </a>
             </div>
-            <div class="col-7 text-wrap " align="right">
+            <div class="col-7 text-wrap m-0" align="right">
                 <a href="{{product | urlConverter}}" target="_blank" class="btn btn-primary btn-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -4 24 24" class="Buy-Svg" height="16" width="16"
                         preserveAspectRatio="xMinYMin">

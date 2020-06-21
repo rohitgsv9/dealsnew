@@ -6,3 +6,12 @@ label.ProductName {
     font-size: 125%;
 
 }
+
+.border {
+
+    position: relative; 
+    top: 10px; 
+    border: none; 
+     
+}
+

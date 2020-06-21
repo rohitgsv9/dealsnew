@@ -3,5 +3,26 @@
   }
 
   span.big {
-    font-size: 150%;
+    font-size: 90%;
   }
+
+  .card-text {
+    font-size: 90%;
+
+  }
+
+  .postthumb {
+    padding: 1px 3px;
+    cursor: pointer;
+    width: auto;
+    height: 140px;
+    display: block;
+    margin: 0 auto;
+    object-fit: scale-down;
+  }
+
+  .img {
+    vertical-align: middle;
+
+  }
+
