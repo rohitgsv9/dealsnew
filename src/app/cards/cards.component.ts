@@ -16,6 +16,9 @@ export class CardsComponent implements OnInit {
 
   ProductList : IProduct[] = [];
 
+  //loader
+  show:boolean= true;
+
   constructor(private backend : BackendService) { }
 
   async ngOnInit() {
@@ -31,12 +34,15 @@ export class CardsComponent implements OnInit {
 
 async hitLatestDealsApi()
 {
+  this.show=true;
   
   this.backend.getLatestDeals(this.pageNumber).subscribe((data)=>
   {
+   this.show=false; 
     this.ProductList = [];
     (data as IProduct[]).forEach(element => { 
         this.ProductList.push(element)
+        
     });      
   })  
 }

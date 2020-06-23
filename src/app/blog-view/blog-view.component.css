@@ -5,3 +5,12 @@
     width: 150px;
     float: left;
   }
+
+  hr.popular {
+    position: relative; 
+    top: 10px; 
+    border: none; 
+    height: 2px; 
+    background: black; 
+   
+}

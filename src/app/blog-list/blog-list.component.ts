@@ -10,13 +10,19 @@ import { BackendService } from '../service/backend.service';
 export class BlogListComponent implements OnInit {
   
   BlogList : IBlog[] = [];
+
+  //loader
+  show:boolean=true;
   constructor(private backend : BackendService) { }
 
   ngOnInit(): void {
+
+    this.show=true;
     this.backend.getBlog().subscribe((data)=>
     {
       (data as IBlog[]).forEach(element => {
         this.BlogList.push(element)
+        this.show=false;
       });      
     })    
   }
