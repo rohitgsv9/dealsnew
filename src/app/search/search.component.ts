@@ -35,7 +35,7 @@ export class SearchComponent implements OnInit {
 
   MoreDeal( )
   {
-      this.backend.getLatestDealsByStore(this.Keyword,++this.pageNumber).subscribe((data)=>
+      this.backend.getLatestDealsByKeyword(this.Keyword,++this.pageNumber).subscribe((data)=>
       {
         (data as IProduct[]).forEach(element => {
           this.ProductList.push(element)

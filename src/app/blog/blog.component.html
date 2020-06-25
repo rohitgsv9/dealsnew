@@ -5,7 +5,7 @@
                         <h4 class="card-title">{{blog.heading}}</h4>
                         <p class="card-text">{{blog.heading}}
                         </p>
-                        <a routerLink="/blogview" class="btn btn-primary">Read More →</a>
+                        <a (click)="ViewBlog(blog)" class="btn btn-primary">Read More →</a>
                         <div class="">
                            <span>{{blog.date}}</span>
                         </div>

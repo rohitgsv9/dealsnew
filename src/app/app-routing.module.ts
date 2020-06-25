@@ -21,12 +21,12 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 const routes: Routes = [
   {path:'', redirectTo:'cards', pathMatch:"full"},
   {path:'product/:id', component:ProductComponent},
+  {path:'blog/:id', component:BlogViewComponent},
   {path:'app', component:AppComponent},
   {path:'cards', component:CardsComponent},
   {path:'blogList', component:BlogListComponent},
   {path:'card', component:CardComponent},
   {path:'blog', component:BlogComponent},
-  {path:'blogview', component:BlogViewComponent},
   {path:'login', component:AdminLoginComponent},
   {path:'amazon', component:AmazonComponent},
   {path:'search/:keyword', component:SearchComponent},
