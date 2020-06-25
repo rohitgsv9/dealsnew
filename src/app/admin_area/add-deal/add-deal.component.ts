@@ -12,7 +12,11 @@ export class AddDealComponent implements OnInit {
   constructor(private backend : BackendService) { }
 
   ngOnInit(): void {
-    if(this.product.name !== undefined)
+    if(this.product.id == 0)
+    {
+      this.buttonValue = "Add Deal";
+    }
+    else if(this.product.name !== undefined)
     {
       this.buttonValue = "Update Deal";      
     }
@@ -25,15 +29,15 @@ export class AddDealComponent implements OnInit {
 
   @Output() page : EventEmitter<string> =   new EventEmitter();
 
-  onSubmit()
+  async onSubmit()
   { if(this.buttonValue === "Add Deal")
     {
-      this.backend.AddDeal(this.product); 
+      await this.backend.AddDeal(this.product); 
       this.page.emit('update_deal');
     }
     else
     {      
-      this.backend.UpdateDeal(this.product); 
+      await this.backend.UpdateDeal(this.product); 
       this.page.emit('update_deal');
     }    
   }

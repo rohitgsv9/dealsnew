@@ -78,10 +78,9 @@ return  this.http.delete(this.apiUrl+"delete-blog.php?id="+id).toPromise();
     console.log("url==",url)
 
     try {
-      
-   
- let data=  await  this.http.get("https://cors-anywhere.herokuapp.com/"+url, {responseType: 'text'}).toPromise()
- console.log("data==backend",data)
+         
+        let data=  await  this.http.get("https://cors-anywhere.herokuapp.com/"+url, {responseType: 'text'}).toPromise()
+        console.log("data==backend")
   
       if(url.search("amazon") !== -1)
       {          
@@ -165,22 +164,17 @@ return  this.http.delete(this.apiUrl+"delete-blog.php?id="+id).toPromise();
       
   }
 
-  AddDeal(product : Product)
+  async AddDeal(product : Product)
   {
     let data = JSON.stringify(product);
-    return  this.http.post(this.apiUrl+"add-deal.php", data).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
-    )
+    return await this.http.post(this.apiUrl+"add-deal.php", data).toPromise()
+    
   }
 
-  UpdateDeal(product : Product)
+  async UpdateDeal(product : Product)
   {
     let data = JSON.stringify(product);
-    return  this.http.post(this.apiUrl+"update-deal.php", data).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
-    )
+    return await  this.http.post(this.apiUrl+"update-deal.php", data).toPromise()
   }
 
   AddBlog(blog : Blog)

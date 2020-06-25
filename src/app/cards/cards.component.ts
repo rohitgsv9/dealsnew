@@ -18,6 +18,7 @@ export class CardsComponent implements OnInit {
 
   //loader
   show:boolean= true;
+  moreDeals : boolean =true;
 
   constructor(private backend : BackendService) { }
 
@@ -38,12 +39,20 @@ async hitLatestDealsApi()
   
   this.backend.getLatestDeals(this.pageNumber).subscribe((data)=>
   {
-   this.show=false; 
-    this.ProductList = [];
+    this.show=false; 
+      this.ProductList = [];
     (data as IProduct[]).forEach(element => { 
-        this.ProductList.push(element)
-        
+        this.ProductList.push(element)        
     });      
+
+    if((data as IProduct[]).length%30 == 0)
+    {
+      this.moreDeals = true;
+    }
+    else
+    {
+      this.moreDeals = false;
+    }
   })  
 }
 
@@ -67,12 +76,14 @@ async hitLatestDealsApi()
 
   MoreDeal( )
   {
+    if(this.moreDeals)
+    {
       this.backend.getLatestDeals(++this.pageNumber).subscribe((data)=>
       {
         (data as IProduct[]).forEach(element => {
           this.ProductList.push(element)
         });      
       }) 
-    
+    }    
   }
 }

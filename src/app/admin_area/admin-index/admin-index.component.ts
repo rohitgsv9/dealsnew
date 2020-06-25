@@ -27,6 +27,7 @@ export class AdminIndexComponent implements OnInit {
     if(page === 'add_deal')
     {
       this.product = new Product();
+      this.product.id = 0;
     }
     if(page === 'add_blog')
     {

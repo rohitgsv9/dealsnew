@@ -12,16 +12,27 @@ export class AmazonComponent implements OnInit {
   pageNumber = 1;
 
   ProductList : IProduct[] = [];
-
+  moreDeals : boolean =true;
+  show:boolean= true;
   constructor(private backend : BackendService) { }
 
   ngOnInit(): void {
     this.backend.getLatestDealsByStore('amazon', this.pageNumber).subscribe((data)=>
     {
+      this.show=false; 
       this.ProductList = [];
       (data as IProduct[]).forEach(element => { 
           this.ProductList.push(element)
       });      
+
+      if((data as IProduct[]).length%30 == 0)
+      {
+        this.moreDeals = true;
+      }
+      else
+      {
+        this.moreDeals = false;
+      }
     })  
   }
 
@@ -29,12 +40,14 @@ export class AmazonComponent implements OnInit {
   {
       this.backend.getLatestDealsByStore('amazon',++this.pageNumber).subscribe((data)=>
       {
+        
         (data as IProduct[]).forEach(element => {
           this.ProductList.push(element)
         });      
       }) 
     
   }
+
   ngOnDestroy()
   {
     this.ProductList = [];

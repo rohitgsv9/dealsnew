@@ -15,7 +15,7 @@ export class BlogViewComponent implements OnInit {
   Blog : IBlog;
 
   //loader
-  show:boolean=true;
+  show:boolean=false;
 
   BlogList : IBlog[] = [];
 

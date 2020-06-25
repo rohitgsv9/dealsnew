@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { BackendService } from 'src/app/service/backend.service';
+import { IProduct } from 'src/app/modal/product';
 
 @Component({
   selector: 'app-add-deal-by-link',
@@ -15,11 +16,15 @@ export class AddDealByLinkComponent implements OnInit {
 
   Link : string = '';
 
-  FetchProduct()
+  @Output() productPass : EventEmitter<IProduct> =   new EventEmitter();
+
+  async FetchProduct()
   {
     if(this.Link !== '')
     {      
-      let product = this.backend.FetchProduct(this.Link);
+      let product = await this.backend.FetchProduct(this.Link);
+      product.id =0;
+      this.productPass.emit(product);
     }
   }
 }
