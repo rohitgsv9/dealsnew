@@ -12,11 +12,11 @@ export class LogoConverter implements PipeTransform
         let retVal : string = "";
         if(product.logo === "amazon")
         {
-            retVal = "https://www.dealsmagnet.com/Assets/img/Logos/Logo/amazon.jpg";
+            retVal = "https://autoaffiliate.in/vishnu/amazon.jpg";
         }
         else if(product.logo === "flipkart")
         {
-            retVal = "https://www.dealsmagnet.com/Assets/img/Logos/Logo/flipkart.jpg";
+            retVal = "https://autoaffiliate.in/vishnu/flipkart.png";
         }       
         
         return retVal;

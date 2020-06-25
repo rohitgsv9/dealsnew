@@ -3,12 +3,16 @@
   }
 
   span.big {
-    font-size: 90%;
+    font-size: 120%;
   }
 
   .card-text {
     font-size: 90%;
 
+  }
+
+  .card-header{
+    border: none;
   }
 
   .postthumb {
