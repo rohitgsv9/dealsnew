@@ -29,6 +29,7 @@ const routes: Routes = [
   {path:'login', component:AdminLoginComponent},
   {path:'amazon', component:AmazonComponent},
   {path:'blogList', component:BlogListComponent},
+  // {path:'viewBlog', component:BlogViewComponent},
   {path:'search/:keyword', component:SearchComponent},
   {path:'flipkart', component:FlipkartComponent},
   {path:'admin', component:AdminIndexComponent, canActivate: [AuthGuard]},
