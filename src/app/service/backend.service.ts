@@ -94,7 +94,7 @@ return  this.http.delete(this.apiUrl+"delete-blog.php?id="+id).toPromise();
           this.product.logo = "flipkart"
           this.product.url = url
       }
-
+        data = null;
        return this.product;
 
   } catch (error) {
@@ -114,7 +114,7 @@ return  this.http.delete(this.apiUrl+"delete-blog.php?id="+id).toPromise();
     value = value.length > 1 ? value[1].split('</',2) : [];
     this.product.name = value.length > 0 ? value[0].replace('<!-- --','') : "";
 
-    value = data.split('class="_2_AcLJ"',2);
+    value = data.split('class="_2_AcLJ',2);
     value = value.length > 1 ? value[1].split('background-image:url(', 2) : [];
     value =  value.length > 1 ? value[1].split(')',2) : [];
     this.product.image = value.length > 0 ? value[0] : "";
@@ -148,12 +148,42 @@ return  this.http.delete(this.apiUrl+"delete-blog.php?id="+id).toPromise();
     value = value.length > 1 ? value[1].split('"',2) : [];
     this.product.image =  value.length > 0 ? value[0] : "";
 
+    if(this.product.image === "")
+    {
+      value = data.split('class="imgTagWrapper',2);
+      value = value.length > 1 ? value[1].split('<img', 2) : [];
+      value = value.length > 1 ? value[1].split('data-a-dynamic-image="',2) : [];
+      value = value.length > 1 ? value[1].split(';',2) : [];
+      value = value.length > 1 ? value[1].split('&quot',2) : [];
+      this.product.image =  value.length > 0 ? value[0] : ""; 
+    }
+
     value = data.split('id="priceblock_ourprice"',2);
     value = value.length > 1 ? value[1].split('>', 2) : [];
     value = value.length > 1 ? value[1].split('</',2) : [];
     value = value.length > 0 ? value[0].split('.',2) : [];
     let temp= value.length > 0 ? value[0].replace('₹','') : "";
     this.product.offer_price =  Number.parseFloat(temp.replace(',',''));
+
+    if(temp === "")
+    {
+      value = data.split('priceblock_dealprice"',2);
+      value = value.length > 1 ? value[1].split('>', 2) : [];
+      value = value.length > 1 ? value[1].split('</',2) : [];
+      value = value.length > 0 ? value[0].split('.',2) : [];
+      let temp= value.length > 0 ? value[0].replace('₹','') : "";
+      this.product.offer_price =  Number.parseFloat(temp.replace(',','')); 
+    }
+
+    if(temp === "")
+    {
+      value = data.split('priceblock_saleprice"',2);
+      value = value.length > 1 ? value[1].split('>', 2) : [];
+      value = value.length > 1 ? value[1].split('</',2) : [];
+      value = value.length > 0 ? value[0].split('.',2) : [];
+      let temp= value.length > 0 ? value[0].replace('₹','') : "";
+      this.product.offer_price =  Number.parseFloat(temp.replace(',',''));       
+    }
 
     value = data.split('class="priceBlockStrikePriceString a-text-strike"',2);
     value = value.length > 1 ? value[1].split('>', 2) : [];
