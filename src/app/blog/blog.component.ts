@@ -12,6 +12,7 @@ export class BlogComponent implements OnInit {
   constructor(private router : Router) { }
 
   ngOnInit(): void {
+    window.scroll(0,0)
   }
 
   @Input() blog : IBlog;

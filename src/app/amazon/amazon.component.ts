@@ -17,6 +17,7 @@ export class AmazonComponent implements OnInit {
   constructor(private backend : BackendService) { }
 
   ngOnInit(): void {
+    window.scroll(0,0)
     this.backend.getLatestDealsByStore('amazon', this.pageNumber).subscribe((data)=>
     {
       this.show=false; 

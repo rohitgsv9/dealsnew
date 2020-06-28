@@ -13,6 +13,7 @@ export class BlogsComponent implements OnInit {
   constructor(private backend : BackendService) { }
 
   ngOnInit(): void {
+    window.scroll(0,0)
     this.backend.getBlog().subscribe((data)=>
     {
       (data as IBlog[]).forEach(element => {

@@ -12,6 +12,7 @@ export class CardComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    window.scroll(0,0)
   }
 
   @Input() product : IProduct;

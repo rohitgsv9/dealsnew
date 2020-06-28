@@ -9,6 +9,7 @@ import { BackendService } from '../service/backend.service';
 })
 export class BlogListComponent implements OnInit {
   
+  
   BlogList : IBlog[] = [];
 
   //loader
@@ -16,7 +17,7 @@ export class BlogListComponent implements OnInit {
   constructor(private backend : BackendService) { }
 
   ngOnInit(): void {
-
+    window.scroll(0,0)
     this.show=true;
     this.backend.getBlog().subscribe((data)=>
     {

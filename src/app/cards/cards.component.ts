@@ -9,6 +9,7 @@ import { IProduct } from '../modal/product';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
+  
   Link:any="https://www.amazon.in/D-Link-DIR-615-Wireless-N300-Router-Black/dp/B0085IATT6/ref=lp_21488193031_1_1?s=computers&ie=UTF8&qid=1592671364&sr=1-1"
   i=0
   interval:any
@@ -23,6 +24,7 @@ export class CardsComponent implements OnInit {
   constructor(private backend : BackendService) { }
 
   async ngOnInit() {
+    window.scroll(0,0)
     // this is for initial api hit
  this.hitLatestDealsApi()  
  // this is for hitting api every minute

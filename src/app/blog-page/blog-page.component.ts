@@ -15,6 +15,7 @@ export class BlogPageComponent implements OnInit {
   Blog : IBlog;
 
   ngOnInit(): void {
+    window.scroll(0,0)
     if(history.state.data !== undefined)
     {
       this.Blog = history.state.data.blog;    

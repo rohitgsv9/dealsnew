@@ -17,6 +17,7 @@ export class FlipkartComponent implements OnInit {
   constructor(private backend : BackendService) { }
 
   ngOnInit(): void {
+    window.scroll(0,0)
     this.backend.getLatestDealsByStore('flipkart', this.pageNumber).subscribe((data)=>
     {
       this.show=false; 
