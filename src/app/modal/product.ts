@@ -7,7 +7,8 @@ export interface IProduct
     offer_price : number,
     actual_price : number,
     logo : string,
-    date : string
+    date : string,
+    desc : string;
 }
 
 export class Product implements IProduct
@@ -24,4 +25,5 @@ export class Product implements IProduct
     actual_price: number;
     logo: string;
     date: string;
+    desc : string;
 }

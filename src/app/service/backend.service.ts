@@ -24,12 +24,17 @@ export class BackendService {
    this.currentUser = this.currentUserSubject.asObservable();
    }
 
-   //
-  apiUrl  = "https://autoaffiliate.in/vishnu/"; //"https://cors-anywhere.herokuapp.com/"+
+   apiUrl  = "https://autoaffiliate.in/vishnu/"; //"https://cors-anywhere.herokuapp.com/"+
+ // apiUrl  = "http://localhost:8090/NewTheme/"; //"https://cors-anywhere.herokuapp.com/"+
 
   getLatestDeals(page : number) 
   {
     return  this.http.get(this.apiUrl+'deals-api.php?page='+page);
+  }
+
+  getTrendingDeals() 
+  {
+    return  this.http.get(this.apiUrl+'deals-api.php');
   }
 
   GetLatestDealsByID(id : number)
@@ -130,6 +135,11 @@ return  this.http.delete(this.apiUrl+"delete-blog.php?id="+id).toPromise();
     value = value.length > 1 ? value[2].split('</',2) : [];
     temp= value.length > 0 ? value[0].replace('₹','') : "";
     this.product.actual_price =  Number.parseFloat(temp.replace(',',''));
+
+    value = data.split('class="_3WHvuP"',2);
+    value = value.length > 1 ? value[1].split('<ul>', 3) : [];
+    value = value.length > 1 ? value[1].split('</ul>',2) : [];
+    this.product.desc =  value.length > 0 ? value[0] : "";
       
   }
   
@@ -191,6 +201,11 @@ return  this.http.delete(this.apiUrl+"delete-blog.php?id="+id).toPromise();
     value = value.length > 0 ? value[0].split('.',2) : [];
     temp= value.length > 0 ?  value[0].replace('₹','') : "";
     this.product.actual_price =  Number.parseFloat(temp.replace(',',''));
+
+    value = data.split('id="feature-bullets"',2);
+    value = value.length > 1 ? value[1].split('<ul class="a-unordered-list a-vertical a-spacing-mini">', 2) : [];
+    value = value.length > 1 ? value[1].split('</ul>',2) : [];
+    this.product.desc= value.length > 0 ?  value[0] : "";
       
   }
 

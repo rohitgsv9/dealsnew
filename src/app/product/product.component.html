@@ -70,32 +70,15 @@
         <div class="col-md-12 mw-100" id="BankOfferContainer">
         </div>
     </div>
-    <!-- <div class="row">
+     <div class="row" *ngIf=Product.desc>
         <div class="col-md-12 mw-100 description-text" oncontextmenu="return false">
             <br>
 
             <p><strong>Product Details:</strong></p>
-            <ul class="a-unordered-list a-vertical a-spacing-none" style="margin-bottom: 0px; margin-left: 18px;">
-                <li style="list-style: disc; overflow-wrap: break-word;"><span class="a-list-item">1 cup capacity</span>
-                </li>
-                <li style="list-style: disc; overflow-wrap: break-word;"><span class="a-list-item">Covered
-                        reservoir</span></li>
-                <li style="list-style: disc; overflow-wrap: break-word;"><span class="a-list-item">Removable drip
-                        tray</span></li>
-                <li style="list-style: disc; overflow-wrap: break-word;"><span class="a-list-item">Indicor light</span>
-                </li>
-                <li style="list-style: disc; overflow-wrap: break-word;"><span class="a-list-item">Pull-out filter
-                        holder-Makes cleaning easy ; Compact design-Convenient and space saving ; Permanent
-                        filter-Durable and reusable</span></li>
-                <li style="list-style: disc; overflow-wrap: break-word;"><span class="a-list-item">Permanent filter,
-                        Single coffee cup and it is small in size</span></li>
-                <li style="list-style: disc; overflow-wrap: break-word;"><span class="a-list-item">Warranty: 2 years on
-                        product</span></li>
-                <li style="list-style: disc; overflow-wrap: break-word;"><span class="a-list-item">Power: 330
-                        watts; Operating voltage: 220-240 volts</span></li>
+            <ul class="a-unordered-list a-vertical a-spacing-none" style="margin-bottom: 0px; margin-left: 18px;" [innerHTML]="Product.desc" >
             </ul>
         </div>
-    </div> -->
+    </div> 
 
     <div class="row">
         <div class="col-md-12 mw-100" oncontextmenu="return false">
