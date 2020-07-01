@@ -13,10 +13,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  Keyword : string;
-  SearchProduct()
-  {
-    let routeUrl = "search/"+this.Keyword;
-    this.router.navigate([routeUrl]);
-  }
+  Keyword : string ="";
+    SearchProduct()
+    {
+      if(this.Keyword !== "")
+      {
+      let routeUrl = "search/"+this.Keyword;
+      this.router.navigate([routeUrl]);
+      }
+    }
 }

@@ -56,10 +56,10 @@
                     
                     <a class="oflow-hidden pos-relative mb-2 dplay-block" *ngFor="let blog of BlogList">
                         <div class="wh-100x abs-tlr ">
-                            <img src="{{blog.img}}" alt=""
+                            <img src="{{blog.img}}" alt="" [routerLink]="['/blog' , blog.id]"
                                 width="50px" height="75px" class="img-responsive"></div>
                         <div class="ml-120 min-h-100x ">
-                            <h6><b>{{blog.heading}}</b></h6>
+                            <h6 ><b>{{blog.heading}}</b></h6>
                             <p class="color-lite-black pt-10">by <span class="color-black"><b>{{blog.author}}</b></span><br>&nbsp;&nbsp;&nbsp;{{blog.date}}</p>
                         </div>
                     </a><!-- oflow-hidden -->                    
