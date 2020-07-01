@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BackendService } from '../service/backend.service';
-import { IProduct } from '../modal/product';
+import { IProduct, Product } from '../modal/product';
 
 @Component({
   selector: 'app-trending',
@@ -61,6 +61,13 @@ async hitLatestDealsApi()
      /* Do something here */
     }
     ,10*6000)
+  }
+
+  @Output() product : EventEmitter<Product> =   new EventEmitter();
+
+  UpdateProduct(product: IProduct)
+  {
+    this.product.emit(product);
   }
 
 }

@@ -35,16 +35,20 @@ export class UpdateDealComponent implements OnInit {
   {
     if(direction === 'next')
     {
+      window.scroll(0,0)
       this.backend.getLatestDeals(++this.pageNumber).subscribe((data)=>
       {
+        this.ProductList = [];
         (data as IProduct[]).forEach(element => {
           this.ProductList.push(element)
         });      
       }) 
     }else if(direction === 'previous')
     {
+      window.scroll(0,0)
       this.backend.getLatestDeals(--this.pageNumber).subscribe((data)=>
-      {
+      {        
+        this.ProductList = [];
         (data as IProduct[]).forEach(element => {
           this.ProductList.push(element)
         });      

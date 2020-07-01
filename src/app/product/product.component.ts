@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IProduct } from '../modal/product';
+import { IProduct, Product } from '../modal/product';
 import { BackendService } from '../service/backend.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { BackendService } from '../service/backend.service';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(private activatedRoute : ActivatedRoute, private backend : BackendService) { }
+  constructor(private activatedRoute : ActivatedRoute, private backend : BackendService, private router: Router) { }
 
   Product : IProduct;
   ngOnInit(): void {
@@ -24,6 +24,12 @@ export class ProductComponent implements OnInit {
         this.Product = (data as IProduct[])[0]   
       })    
     }
+  }
+  UpdateProduct(product : Product)
+  {    
+    let routeUrl = "product/"+product.id;
+    this.router.navigate([routeUrl], {state: {data: {product}}});
+    this.Product = product; 
   }
 
 }

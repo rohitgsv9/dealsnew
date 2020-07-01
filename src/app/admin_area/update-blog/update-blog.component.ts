@@ -11,6 +11,7 @@ import { IBlog, Blog } from 'src/app/modal/blog';
 })
 export class UpdateBlogComponent implements OnInit {
 
+  pageNumber = 1;
   BlogList : IBlog[] = [];
 
   constructor(private backend : BackendService, private router : Router) { }
@@ -37,4 +38,28 @@ export class UpdateBlogComponent implements OnInit {
     this.backend.deleteBlog(id);
   }
 
+  MoreDeal(direction : string)
+  {
+    if(direction === 'next')
+    {
+      window.scroll(0,0)
+      this.backend.getLatestDeals(++this.pageNumber).subscribe((data)=>
+      {
+        this.BlogList = [];
+        (data as IBlog[]).forEach(element => {
+          this.BlogList.push(element)
+        });      
+      }) 
+    }else if(direction === 'previous')
+    {
+      window.scroll(0,0)
+      this.backend.getLatestDeals(--this.pageNumber).subscribe((data)=>
+      {        
+        this.BlogList = [];
+        (data as IBlog[]).forEach(element => {
+          this.BlogList.push(element)
+        });      
+      }) 
+    }
+  }
 }

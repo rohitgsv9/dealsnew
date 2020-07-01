@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IProduct } from '../modal/product';
 import { Router } from '@angular/router';
 
@@ -17,9 +17,14 @@ export class CardComponent implements OnInit {
 
   @Input() product : IProduct;
 
+  @Output() productPass : EventEmitter<IProduct> =   new EventEmitter();
+
   ViewProduct(product: IProduct)
   {
+    window.scroll(0,0)
     let routeUrl = "product/"+product.id;
     this.router.navigate([routeUrl], {state: {data: {product}}});
+    this.productPass.emit(product);
+    
   }
 }
