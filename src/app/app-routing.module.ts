@@ -14,6 +14,7 @@ import { AmazonComponent } from './amazon/amazon.component';
 import { FlipkartComponent } from './flipkart/flipkart.component';
 import { SearchComponent } from './search/search.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
+import { AboutComponent } from './about/about.component';
 
 
 
@@ -32,6 +33,7 @@ const routes: Routes = [
   // {path:'viewBlog', component:BlogViewComponent},
   {path:'search/:keyword', component:SearchComponent},
   {path:'flipkart', component:FlipkartComponent},
+  {path:'about', component:AboutComponent},
   {path:'admin', component:AdminIndexComponent, canActivate: [AuthGuard]},
   {path:'**', component:PageNotFoundComponent}
 ]; 

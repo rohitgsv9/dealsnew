@@ -11,7 +11,49 @@ label.ProductName {
 
     position: relative; 
     top: 10px; 
-    border: none;     
+    border: none;    
 }
+
+.MainImage {
+    padding: 1px 3px;
+    cursor: pointer;
+    width: auto;
+    height: 140px;
+    display: block;
+    margin: 0 auto;
+    object-fit: scale-down;
+    margin-bottom: 30px;
+  }
+
+  /* .img {
+    vertical-align: middle;
+
+  } */
+
+.big1 {
+    font-size: 110%;
+    font-weight: bold;
+}
+
+.fix-bottom {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+    float: left;
+}
+
+* {
+    font-family: unset!important;
+}
+
+
+
+
+
+
+
+
 
 
