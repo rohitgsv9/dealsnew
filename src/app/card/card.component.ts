@@ -22,8 +22,8 @@ export class CardComponent implements OnInit {
   ViewProduct(product: IProduct)
   {
     window.scroll(0,0)
-    product.name = product.name.replace(/\s/g, '-')
-    let routeUrl = "product/"+product.name;
+    let name = product.name.replace(/\s/g, '-')
+    let routeUrl = "product/"+product.id+"/"+name;
     this.router.navigate([routeUrl], {state: {data: {product}}});
     this.productPass.emit(product);
     
