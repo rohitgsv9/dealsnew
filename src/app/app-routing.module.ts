@@ -20,7 +20,8 @@ import { AboutComponent } from './about/about.component';
 
 
 const routes: Routes = [
-  {path:'', redirectTo:'cards', pathMatch:"full"},
+  //{path:'', redirectTo:'cards', pathMatch:"full"},
+  {path:'', component:CardsComponent},
   {path:'product/:id', component:ProductComponent},
   {path:'blog/:id', component:BlogViewComponent},
   {path:'app', component:AppComponent},
