@@ -4,6 +4,7 @@ import {  Product } from '../modal/product';
 import { User } from '../modal/user';
 import {  BehaviorSubject,  Observable } from 'rxjs';
 import { Blog } from '../modal/blog';
+import { Caro } from '../modal/caro';
 
 const httpOptions =  {
   headers: new HttpHeaders(
@@ -24,12 +25,17 @@ export class BackendService {
    this.currentUser = this.currentUserSubject.asObservable();
    }
 
- //  apiUrl  = "https://autoaffiliate.in/vishnu/"; //"https://cors-anywhere.herokuapp.com/"+
- apiUrl  = "http://localhost:8090/NewTheme/"; //"https://cors-anywhere.herokuapp.com/"+
+  apiUrl  = "https://cors-anywhere.herokuapp.com/"+"https://autoaffiliate.in/vishnu/"; //
+//apiUrl  = "http://localhost:8090/NewTheme/"; //"https://cors-anywhere.herokuapp.com/"+
 
   getLatestDeals(page : number) 
   {
     return  this.http.get(this.apiUrl+'deals-api.php?page='+page);
+  }
+
+  getCaro() 
+  {
+    return  this.http.get(this.apiUrl+'caro-api.php');
   }
 
   getTrendingDeals() 
@@ -37,9 +43,9 @@ export class BackendService {
     return  this.http.get(this.apiUrl+'deals-api.php');
   }
 
-  GetLatestDealsByID(id : number)
+  GetLatestDealsByID(name : string)
   {
-    let url= this.apiUrl+"deals-api.php?id="+id;
+    let url= this.apiUrl+"deals-api.php?id="+name;
     return this.http.get(url);
   }
 
@@ -68,7 +74,12 @@ export class BackendService {
 
   deleteBlog(id : number) 
   {
-return  this.http.delete(this.apiUrl+"delete-blog.php?id="+id).toPromise();
+      return  this.http.delete(this.apiUrl+"delete-blog.php?id="+id).toPromise();
+  }
+
+  deleteCaro(id : number) 
+  {
+    return  this.http.delete(this.apiUrl+"delete-caro.php?id="+id).toPromise();
   }
 
   GetBlogById(id : number)
@@ -220,6 +231,19 @@ return  this.http.delete(this.apiUrl+"delete-blog.php?id="+id).toPromise();
   {
     let data = JSON.stringify(product);
     return await  this.http.post(this.apiUrl+"update-deal.php", data).toPromise()
+  }
+
+  async AddCaro(caro : Caro)
+  {
+    let data = JSON.stringify(caro);
+    return await this.http.post(this.apiUrl+"add-caro.php", data).toPromise()
+    
+  }
+
+  async UpdateCaro(caro : Caro)
+  {
+    let data = JSON.stringify(caro);
+    return await  this.http.post(this.apiUrl+"update-caro.php", data).toPromise()
   }
 
   AddBlog(blog : Blog)

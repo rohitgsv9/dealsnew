@@ -1,36 +1,28 @@
-<div class="conatainer">
-    <br>
-
-
+<br>
 <div class="container">
-    <h2 class="text-success">View Carousel</h2>
+    <h2 class="text-success">View Caro</h2>
     <div class="row">
         <div class="col-md-12">
             <table class="table">
                 <thead class="thead-dark">
-                    <tr>
-                        <th>Sr. Number</th>
+                    <tr>                        
                         <th>Image</th>
-                        <th>Caro img Name</th>
+                        <th>Caro Url</th>
+                        <th>Edit Caro</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let pro of product; index as i">
-                        <td>{{i+1}}</td>
-                        <td><img src="assets\pan.png" alt="image" width="70"></td>
-                        <td>{{pro.name}}</td>
-                        <td><button class="btn btn-danger" >Delete Carousel</button></td>
+                    <tr *ngFor="let pro of CaroList; index as i">                        
+                        <td><img src={{pro.image}} alt="image" width="70" /></td>
+                        <td>{{pro.url}}</td>
+                        <td><button class="btn btn-success" (click)="EditCaro(pro)">Edit Caro</button></td>
+                        <td><button class="btn btn-danger" (click)="DeleteCaro(pro.id)" >Remove Caro</button></td>
                     </tr>
                 </tbody>
             </table>
-
         </div>
     </div>
-    
 
 </div> 
 <br>
-
-
-</div>

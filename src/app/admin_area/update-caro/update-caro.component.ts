@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { BackendService } from 'src/app/service/backend.service';
+import { Router } from '@angular/router';
+import { ICaro } from 'src/app/modal/caro';
 
 @Component({
   selector: 'app-update-caro',
@@ -7,16 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateCaroComponent implements OnInit {
 
-  constructor() { }
+  CaroList : ICaro[] = [];
+
+  constructor(private backend : BackendService, private router : Router) { }
+
   ngOnInit(): void {
+    this.backend.getCaro().subscribe((data)=>
+    {
+      (data as ICaro[]).forEach(element => {
+        this.CaroList.push(element)
+      });      
+    })    
   }
-  selectedProd:string;
-  
-  product= [
-    {proimg:'../../assets/amazon logo.png', name:'Laptop'},
-    {proimg:'../../assets/flipkart logo.jpg', name:'Mobile'},
-    // {proimg:'../../assets/logo1.jpg', name:'TV', id:'pro3'},
-    // {proimg:'../../assets/im9.png', name:'Washing Machine'}
-  ]
+
+  @Output() caroPass : EventEmitter<ICaro> =   new EventEmitter();
+
+  EditCaro(caro : ICaro)
+  {
+    this.caroPass.emit(caro);
+  }
+
+  DeleteCaro(id : number)
+  {
+    this.CaroList = this.CaroList.filter(temp => temp.id !== id)
+    this.backend.deleteCaro(id);
+  }
+
 
 }

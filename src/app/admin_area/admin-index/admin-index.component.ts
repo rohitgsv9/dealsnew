@@ -3,6 +3,7 @@ import { BackendService } from 'src/app/service/backend.service';
 import { Router } from '@angular/router';
 import { Product, IProduct } from 'src/app/modal/product';
 import { IBlog, Blog } from 'src/app/modal/blog';
+import { ICaro, Caro } from 'src/app/modal/caro';
 
 @Component({
   selector: 'app-admin-index',
@@ -20,6 +21,7 @@ export class AdminIndexComponent implements OnInit {
 
   product = new Product();
   blog = new Blog();
+  caro = new Caro();
   view : string;
 
   viewPage(page : string)
@@ -32,6 +34,10 @@ export class AdminIndexComponent implements OnInit {
     if(page === 'add_blog')
     {
       this.blog = new Blog();
+    }
+    if(page === 'add_caro')
+    {
+      this.caro = new Caro();
     }
     this.view = page;
   }
@@ -51,5 +57,10 @@ export class AdminIndexComponent implements OnInit {
   blogPass(blog: IBlog) {
     this.blog = blog;
     this.view = 'add_blog';    
+  }
+
+  caroPass(caro: ICaro) {
+    this.caro = caro;
+    this.view = 'add_caro';    
   }
 }

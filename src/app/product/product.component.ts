@@ -19,7 +19,8 @@ export class ProductComponent implements OnInit {
       this.Product = history.state.data.product;    
     }else
     {
-      this.backend.GetLatestDealsByID(this.activatedRoute.snapshot.params.id).subscribe((data)=>
+      let name = (this.activatedRoute.snapshot.params.name as string).replace('-',' ');
+      this.backend.GetLatestDealsByID(name).subscribe((data)=>
       {
         this.Product = (data as IProduct[])[0]   
       })    

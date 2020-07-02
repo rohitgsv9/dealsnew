@@ -21,8 +21,8 @@
                   <a (click)="viewPage('add_deal_by_link')" class="btn text-white">Add Deals By Link</a>
                   <a (click)="viewPage('add_blog')" class="btn text-white"> Add Blog</a>
                   <a (click)="viewPage('update_blog')"  class="btn text-white">View Blog</a> 
-                  <!-- <a (click)="viewPage('add_caro')" class="btn ">Add Carousel </a> 
-                  <a (click)="viewPage('update_caro')" class="btn text-white">View Carousel</a> -->
+                  <a (click)="viewPage('add_caro')" class="btn ">Add Carousel </a> 
+                  <a (click)="viewPage('update_caro')" class="btn text-white">View Carousel</a>
                   <a (click)="Logout()"  class="btn text-white"><li>Logout</li></a>
                 </div>
     
@@ -49,10 +49,10 @@
         <app-add-deal-by-link (productPass)="productPass($event)"></app-add-deal-by-link>
       </div>
       <div class="col-12" *ngIf="view == 'update_caro'">
-        <app-update-caro></app-update-caro>
+        <app-update-caro (caroPass)="caroPass($event)"></app-update-caro>
       </div>
       <div class="col-12" *ngIf="view == 'add_caro'">
-        <app-add-caro></app-add-caro>
+        <app-add-caro [caro]=caro (page)="viewPage($event)"></app-add-caro>
       </div>
     </div>
   </div>
