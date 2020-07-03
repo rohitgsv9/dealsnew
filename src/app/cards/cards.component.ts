@@ -24,7 +24,7 @@ export class CardsComponent implements OnInit {
   constructor(private backend : BackendService) { }
 
   async ngOnInit() {
-    window.scroll(0,0)
+    
     // this is for initial api hit
  this.hitLatestDealsApi()  
  // this is for hitting api every minute
