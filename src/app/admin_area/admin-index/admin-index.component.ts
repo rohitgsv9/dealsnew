@@ -45,7 +45,7 @@ export class AdminIndexComponent implements OnInit {
   Logout()
   {
     this.backend.logout();
-    this.router.navigate(['/cards'])
+    this.router.navigate(['/'])
   }
   productPass(product: IProduct) {
     this.product = product;

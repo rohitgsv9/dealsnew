@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductComponent} from './product/product.component';
-import { CardComponent } from './card/card.component';
 import { CardsComponent } from './cards/cards.component';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -22,11 +21,9 @@ import { AboutComponent } from './about/about.component';
 const routes: Routes = [
   //{path:'', redirectTo:'cards', pathMatch:"full"},
   {path:'', component:CardsComponent},
-  {path:'product/:id', component:ProductComponent},
+  {path:'product/:id/:name', component:ProductComponent},
   {path:'blog/:id', component:BlogViewComponent},
   {path:'app', component:AppComponent},
-  {path:'card', component:CardComponent},
-  {path:'cards', component:CardsComponent},
   {path:'blog', component:BlogComponent},
   {path:'login', component:AdminLoginComponent},
   {path:'amazon', component:AmazonComponent},
