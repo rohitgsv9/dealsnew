@@ -20,7 +20,7 @@ export class BlogComponent implements OnInit {
   
 ViewBlog(blog: IBlog)
 {
-  let routeUrl = "blog/"+blog.id;
+  let routeUrl = "blog/"+blog.id+"/"+blog.heading;
   this.router.navigate([routeUrl], {state: {data: {blog}}});
 }
 }

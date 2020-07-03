@@ -6,16 +6,13 @@
 
 <div class="container">
     <div class="row mt-2" id="row-blog-recomendation">
-
         <div class="col-lg-4 col-md-6 mb-1 cardStyle" *ngFor="let blog of BlogList">
             <app-blog [blog]=blog></app-blog>
         </div>
-
-
-        <div class="col-lg-4 col-md-6 mb-1 cardStyle" *ngFor="let blog of BlogList">
-            <app-blog [blog]=blog></app-blog>
-        </div>
-
     </div>
+</div>
+
+<div class="text-center m-4" *ngIf="moreDeals">
+    <button class="btn btn-secondary" (click)="MoreDeal()" style="background-color: #00AA6C;">More Deals</button>
 </div>
 

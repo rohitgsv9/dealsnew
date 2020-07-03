@@ -11,6 +11,8 @@ export class BlogListComponent implements OnInit {
   
   
   BlogList : IBlog[] = [];
+  pageNumber = 1;
+  moreDeals : boolean =true;
 
   //loader
   show:boolean=true;
@@ -19,13 +21,38 @@ export class BlogListComponent implements OnInit {
   ngOnInit(): void {
     window.scroll(0,0)
     this.show=true;
-    this.backend.getBlog().subscribe((data)=>
+    this.backend.getBlogByPage(this.pageNumber).subscribe((data)=>
     {
       (data as IBlog[]).forEach(element => {
         this.BlogList.push(element)
         this.show=false;
-      });      
-    })    
+      });           
+          
+      if((data as IBlog[]).length%12 == 0)
+      {
+        this.moreDeals = true;
+      }
+      else
+      {
+        this.moreDeals = false;
+      }
+      
+    })   
+
+    
+  }
+
+  MoreDeal( )
+  {
+    if(this.moreDeals)
+    {
+      this.backend.getBlogByPage(++this.pageNumber).subscribe((data)=>
+      {
+        (data as IBlog[]).forEach(element => {
+          this.BlogList.push(element)
+        });      
+      }) 
+    }    
   }
 
 }

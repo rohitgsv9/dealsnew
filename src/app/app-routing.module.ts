@@ -22,7 +22,7 @@ const routes: Routes = [
   //{path:'', redirectTo:'cards', pathMatch:"full"},
   {path:'', component:CardsComponent},
   {path:'product/:id/:name', component:ProductComponent},
-  {path:'blog/:id', component:BlogViewComponent},
+  {path:'blog/:id/:heading', component:BlogViewComponent},
   {path:'app', component:AppComponent},
   {path:'blog', component:BlogComponent},
   {path:'login', component:AdminLoginComponent},

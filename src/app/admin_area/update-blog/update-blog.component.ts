@@ -17,7 +17,7 @@ export class UpdateBlogComponent implements OnInit {
   constructor(private backend : BackendService, private router : Router) { }
 
   ngOnInit(): void {
-    this.backend.getBlog().subscribe((data)=>
+    this.backend.getBlogByPage(this.pageNumber).subscribe((data)=>
     {
       (data as IBlog[]).forEach(element => {
         this.BlogList.push(element)
@@ -43,7 +43,7 @@ export class UpdateBlogComponent implements OnInit {
     if(direction === 'next')
     {
       window.scroll(0,0)
-      this.backend.getLatestDeals(++this.pageNumber).subscribe((data)=>
+      this.backend.getBlogByPage(++this.pageNumber).subscribe((data)=>
       {
         this.BlogList = [];
         (data as IBlog[]).forEach(element => {
@@ -53,7 +53,7 @@ export class UpdateBlogComponent implements OnInit {
     }else if(direction === 'previous')
     {
       window.scroll(0,0)
-      this.backend.getLatestDeals(--this.pageNumber).subscribe((data)=>
+      this.backend.getBlogByPage(--this.pageNumber).subscribe((data)=>
       {        
         this.BlogList = [];
         (data as IBlog[]).forEach(element => {
