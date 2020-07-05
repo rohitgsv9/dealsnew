@@ -18,8 +18,8 @@ export class BlogListComponent implements OnInit {
   show:boolean=true;
   constructor(private backend : BackendService) { }
 
-  ngOnInit(): void {
-    window.scroll(0,0)
+  ngOnInit(): void 
+  {
     this.show=true;
     this.backend.getBlogByPage(this.pageNumber).subscribe((data)=>
     {

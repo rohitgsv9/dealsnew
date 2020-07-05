@@ -29,16 +29,19 @@ export class BlogViewComponent implements OnInit {
       this.show=true;
       this.backend.GetBlogById(this.activatedRoute.snapshot.params.id).subscribe((data)=>
       {
-        this.Blog = (data as IBlog[])[0] 
-        this.backend.getBlog().subscribe((data)=>
-        {
-          (data as IBlog[]).forEach(element => {
-            this.BlogList.push(element)
-          }); 
-          this.show=false;     
-        })      
+        this.Blog = (data as IBlog[])[0]      
       })    
+      this.show=false;   
     }
+
+    this.backend.getBlog().subscribe((data)=>
+    {
+      (data as IBlog[]).forEach(element => {
+        this.BlogList.push(element)
+      }); 
+        
+    }) 
+
   }
 
   

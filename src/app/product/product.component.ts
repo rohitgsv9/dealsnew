@@ -27,8 +27,6 @@ export class ProductComponent implements OnInit {
   }
   UpdateProduct(product : Product)
   {    
-    let routeUrl = "product/"+product.id;
-    this.router.navigate([routeUrl], {state: {data: {product}}});
     this.Product = product; 
   }
 
