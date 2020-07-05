@@ -25,8 +25,8 @@ export class BackendService {
    this.currentUser = this.currentUserSubject.asObservable();
    }
 
-  //apiUrl  = "https://cors-anywhere.herokuapp.com/"+"https://autoaffiliate.in/vishnu/"; //
-apiUrl  = "http://localhost:8090/NewTheme/"; //"https://cors-anywhere.herokuapp.com/"+
+  apiUrl  = "https://cors-anywhere.herokuapp.com/"+"https://autoaffiliate.in/vishnu/"; //
+// apiUrl  = "http://localhost:8090/NewTheme/"; //"https://cors-anywhere.herokuapp.com/"+
 
   getLatestDeals(page : number) 
   {
